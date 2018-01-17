@@ -10,11 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180117160251) do
+ActiveRecord::Schema.define(version: 20180117165055) do
 
   create_table "campaigns", force: :cascade do |t|
     t.string "name"
     t.string "setting"
+    t.integer "user_id"
   end
 
   create_table "characters", force: :cascade do |t|
@@ -26,11 +27,23 @@ ActiveRecord::Schema.define(version: 20180117160251) do
     t.integer "xp"
     t.string "stats"
     t.integer "passive_perception"
+    t.integer "campaign_id"
   end
 
   create_table "encounters", force: :cascade do |t|
     t.string "loot"
     t.string "notes"
+    t.integer "campaign_id"
+  end
+
+  create_table "encounters_characters", force: :cascade do |t|
+    t.integer "encounter_id"
+    t.integer "character_id"
+  end
+
+  create_table "encounters_enemies", force: :cascade do |t|
+    t.integer "encounter_id"
+    t.integer "enemy_id"
   end
 
   create_table "enemies", force: :cascade do |t|
@@ -39,6 +52,7 @@ ActiveRecord::Schema.define(version: 20180117160251) do
     t.integer "ac"
     t.string "notes"
     t.string "damage"
+    t.integer "campign_id"
   end
 
   create_table "users", force: :cascade do |t|
