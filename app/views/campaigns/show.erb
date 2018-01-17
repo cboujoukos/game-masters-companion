@@ -1,0 +1,27 @@
+<% content_for :title do %>
+  Game Master's Companion
+<% end %>
+
+<h3><%= @campaign.name %></h3>
+<h4>&ensp;-<%= @campaign.setting %></h4>
+<p><%= @campaign.notes %></p>
+<br>
+<h4>Players</h4>
+<dl><% @campaign.characters.each do |char| %>
+  <% if !!char.is_player %>
+    <dt><%= char.name %></dt>
+    <dd><%= char.notes %></dd>
+    <br>
+  <% end %>
+<% end %></dl>
+<h4>NPCs</h4>
+<dl><% @campaign.characters.each do |char| %>
+  <% if !char.is_player %>
+    <dt><%= char.name %></dt>
+    <dd><%= char.notes %></dd>
+  <% end %>
+<% end %></dl>
+
+<p><a href="/campaigns/<%= @campaign.slug %>/create_character">Add Characters</a></p>
+<br><br>
+<h3> <a href="/campaigns/<%= @campaign.slug %>/edit">Edit this campaign</a> </h3>

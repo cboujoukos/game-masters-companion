@@ -5,5 +5,7 @@ if ActiveRecord::Migrator.needs_migration?
 end
 
 use Rack::MethodOverride
+use CharactersController
+use CampaignsController
 use UsersController
 run ApplicationController

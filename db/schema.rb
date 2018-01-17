@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180117191719) do
+ActiveRecord::Schema.define(version: 20180117215307) do
 
   create_table "campaigns", force: :cascade do |t|
     t.string "name"
@@ -23,11 +23,11 @@ ActiveRecord::Schema.define(version: 20180117191719) do
     t.boolean "is_player"
     t.string "name"
     t.text "notes"
-    t.integer "ac"
-    t.integer "hp"
-    t.integer "xp"
+    t.string "ac"
+    t.string "hp"
+    t.string "xp"
     t.text "stats"
-    t.integer "passive_perception"
+    t.string "passive_perception"
     t.integer "campaign_id"
   end
 
@@ -49,8 +49,8 @@ ActiveRecord::Schema.define(version: 20180117191719) do
 
   create_table "enemies", force: :cascade do |t|
     t.string "category"
-    t.integer "hp"
-    t.integer "ac"
+    t.string "hp"
+    t.string "ac"
     t.text "notes"
     t.string "damage"
     t.integer "campign_id"

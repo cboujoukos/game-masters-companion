@@ -1,0 +1,23 @@
+<% content_for :title do %>
+  Game Master's Companion
+<% end %>
+
+<div class="container">
+  <form class="" action="/campaigns" method="post">
+    <h2>Create a new campaign</h2>
+    <div class="form-group">
+      <label for="Name">Name</label>
+      <input type="text" class="form-control" name="name" id="campaign_name"    placeholder="Name">
+    </div>
+    <div class="form-group">
+      <label for="Setting">Setting</label>
+      <input type="text" class="form-control" name="setting" id="campaign_setting"    placeholder="Setting">
+    </div>
+    <div class="form-group">
+      <label for="Notes">Notes</label>
+      <br>
+      <textarea name="notes" rows="8" cols="80"></textarea>
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+</div>

@@ -2,11 +2,18 @@
   Home Page
 <% end %>
 
-<h2>Welcome to the game master's companion, <%= @user.username %></h2>
+<div class="container">
+  <h2>Welcome to the game master's companion, <%= @user.username %></h2>
 
-<dl><% current_user.campaigns.each do |c| %>
-  <dt><a href="#"><!-- link to campaign show page --><%= c.name %></a></dt>
-  <dd><%= c.notes %></dd>
-<% end %>
-</dl>
-<a href="/logout">Logout</a>
+  <h3><a href="/campaigns/new">Start a New Campaign!</a></h3>
+
+  <dl><% current_user.campaigns.each do |c| %>
+    <dt><a href="/campaigns/<%= c.slug %>"><!-- link to campaign show page --><%= c.name %></a></dt>
+    <dd><%= c.notes %></dd>
+    <br>
+    <% end %>
+  </dl>
+
+
+  <a href="/logout">Logout</a>
+</div>
