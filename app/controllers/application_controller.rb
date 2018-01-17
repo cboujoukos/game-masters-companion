@@ -1,4 +1,5 @@
 class ApplicationController < Sinatra::Base
+  helpers Sinatra::ContentFor
 
   configure do
     set :public_folder, 'public'
@@ -6,9 +7,9 @@ class ApplicationController < Sinatra::Base
     enable :sessions
     set :session_secret, "password_security"
   end
-  
+
   get '/' do
-    "Hello, World!"
+    erb :index
   end
 
   helpers do
