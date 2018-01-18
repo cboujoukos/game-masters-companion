@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180118185052) do
+ActiveRecord::Schema.define(version: 20180118200803) do
 
   create_table "campaigns", force: :cascade do |t|
     t.string "name"
@@ -31,16 +31,16 @@ ActiveRecord::Schema.define(version: 20180118185052) do
     t.integer "campaign_id"
   end
 
+  create_table "characters_encounters", force: :cascade do |t|
+    t.integer "encounter_id"
+    t.integer "character_id"
+  end
+
   create_table "encounters", force: :cascade do |t|
     t.string "loot"
     t.text "notes"
     t.integer "campaign_id"
     t.string "name"
-  end
-
-  create_table "encounters_characters", force: :cascade do |t|
-    t.integer "encounter_id"
-    t.integer "character_id"
   end
 
   create_table "encounters_enemies", force: :cascade do |t|
