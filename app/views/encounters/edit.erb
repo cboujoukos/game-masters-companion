@@ -3,3 +3,65 @@
 <% end %>
 
 <h1>Encounters edit page</h1>
+
+<% content_for :title do %>
+  Game Master's Companion
+<% end %>
+
+<div class="container">
+  <h2>Add a new encounter</h2>
+  <form class="" action="/campaigns/<%= @campaign.slug %>/encounters/<%= @encounter.id %>" method="post">
+    <div class="row">
+      <div class="col-md-6">
+
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-12">
+              <label for="Name">Name</label>
+              <input type="text" class="form-control" name="encounter[name]"    id="encounter_name"    value="<%= @encounter.name %>">
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-12">
+              <label for="Loot">Loot</label>
+              <input type="text" class="form-control" name="encounter[loot]"    id="loot"    value="<%= @encounter.loot %>">
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="Notes">Notes</label>
+          <br>
+          <textarea name="encounter[notes]" class="form-control" rows="4" style="min-width: 100%"><%= @encounter.notes %></textarea>
+        </div>
+      <!--  <button type="submit" class="btn btn-default">Submit</button>
+      </form> -->
+    </div>
+    <div class="col-md-6">
+      <h4>Add Characters</h4>
+      <h5>Players</h5>
+      <% @campaign.characters.each do |char| %>
+        <% if !!char.is_player %>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="encounter_characters[]" value="<%= char.id %>"  <%='checked' if @encounter_character_ids.include?(char.id) %>> <%= char.name %>
+            </label>
+          </div>
+        <% end %>
+      <% end %>
+      <h5>NPCs</h5>
+      <% @campaign.characters.each do |char| %>
+        <% if !char.is_player %>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="encounter_characters[]" value="<%= char.id %>" <%='checked' if @encounter_character_ids.include?(char.id) %>> <%= char.name %>
+            </label>
+          </div>
+        <% end %>
+      <% end %>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+</div>

@@ -11,7 +11,11 @@ class EncountersController < ApplicationController
   post '/:slug/encounters' do
     @user = User.find(session[:id])
     @campaign = Campaign.find_by_slug(params[:slug])
-    @encounter = Encounter.new(params[:encounter])
+    @encounter = Encounter.new(name: params[:encounter][:name],loot: params[:encounter][:loot],notes: params[:encounter][:notes])
+    #binding.pry
+    params[:encounter_characters].each do |char|
+      @encounter.characters << Character.find(char)
+    end
     if @encounter.name != ""
       @encounter.campaign_id = @campaign.id
       @encounter.save
@@ -32,10 +36,11 @@ class EncountersController < ApplicationController
     end
   end
 
-  get "/campaigns/:slug/characters/:id/edit_encounter" do
+  get "/campaigns/:slug/encounters/:id/edit_encounter" do
     @user = User.find(session[:id])
     @campaign = Campaign.find_by_slug(params[:slug])
     @encounter = Encounter.find(params[:id])
+    @encounter_character_ids = @encounter.characters.collect{|char| char.id}
     if logged_in?
       erb :'/encounters/edit'
     else
@@ -47,9 +52,18 @@ class EncountersController < ApplicationController
     @user = User.find(session[:id])
     @campaign = Campaign.find_by_slug(params[:slug])
     @encounter = Encounter.find(params[:id])
-    @encounter.update(params[:encounter])
-    @encounter.save
-    redirect "/campaigns/#{@campaign.slug}/encounters/#{@encounter.id}"
+    @encounter.update(name: params[:encounter][:name],loot: params[:encounter][:loot],notes: params[:encounter][:notes])
+    @encounter.characters = []
+    params[:encounter_characters].each do |char|
+      @encounter.characters << Character.find(char)
+    end
+    #@encounter_character_ids = @encounter.characters.collect{|char| char.id}
+    if @encounter.name != ""
+      @encounter.save
+      redirect "/campaigns/#{@campaign.slug}/encounters/#{@encounter.id}"
+    else
+      redirect '/'
+    end
   end
 
   delete "/campaigns/:slug/encounters/:id" do

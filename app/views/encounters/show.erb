@@ -2,4 +2,18 @@
   Game Master's Companion
 <% end %>
 
-<h1>Encounters show page</h1>
+<h3><%= @encounter.name %></h3>
+<h4><%= @encounter.notes %></h4>
+<h4>Loot: <%= @encounter.loot %></h4>
+<% @encounter.characters.each do |char| %>
+  <p><%= char.name %></p>
+<% end %>
+
+<div class="row">
+  <div class="col-md-8">
+    <h4> <a href="/campaigns/<%= @campaign.slug %>/encounters/<%= @encounter.id %>/edit_encounter">Edit Encounter</a> </h4>
+  </div>
+  <div class="col-md-4">
+    <h4><a href="/campaigns/<%= @campaign.slug %>">Back to Campaign</a></h4>
+  </div>
+</div>

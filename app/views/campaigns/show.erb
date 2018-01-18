@@ -34,7 +34,11 @@
   </div>
   <div class="col-md-6">
     <h4>Encounters</h4>
-
+      <dl><% @campaign.encounters.each do |en| %>
+        <dt><a href="/campaigns/<%= @campaign.slug %>/encounters/<%= en.id    %>"><%= en.name %></a></dt>
+        <dd><%= en.notes %></dd>
+      <% end %>
+    </dl>
     <br>
     <p><a href="/campaigns/<%= @campaign.slug %>/create_encounter">Add Encounter</a></p>
   </div>
