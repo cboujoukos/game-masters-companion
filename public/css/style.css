@@ -6,6 +6,10 @@ body {
   background-image: url("../img/hexellence.png");
 }
 
+.half {
+  width: 50%;
+}
+
 .login {
   width: 40%;
 }

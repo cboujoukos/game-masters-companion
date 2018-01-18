@@ -9,7 +9,7 @@
 <h4>Players</h4>
 <dl><% @campaign.characters.each do |char| %>
   <% if !!char.is_player %>
-    <dt><%= char.name %></dt>
+    <dt><a href="/campaigns/<%= @campaign.slug %>/characters/<%= char.id %>"><%= char.name %></a></dt>
     <dd><%= char.notes %></dd>
     <br>
   <% end %>
@@ -17,7 +17,7 @@
 <h4>NPCs</h4>
 <dl><% @campaign.characters.each do |char| %>
   <% if !char.is_player %>
-    <dt><%= char.name %></dt>
+    <dt><a href="/campaigns/<%= @campaign.slug %>/characters/<%= char.id %>"><%= char.name %></a></dt>
     <dd><%= char.notes %></dd>
   <% end %>
 <% end %></dl>

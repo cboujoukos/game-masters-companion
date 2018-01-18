@@ -48,8 +48,9 @@ class CharactersController < ApplicationController
     @user = User.find(session[:id])
     @campaign = Campaign.find_by_slug(params[:slug])
     @character = Character.find(params[:id])
-    @character.update(params[:characters][])
+    @character.update(params[:character])
     @character.save
+    redirect "/campaigns/#{@campaign.slug}/characters/#{@character.id}"
   end
 
 end

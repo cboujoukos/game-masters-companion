@@ -1,3 +1,31 @@
-<h1>chharacter show page</h1>
-<p><%= @character.name %></p>
-<p> <a href="#">Edit character</a> </p>
+<h1>character show page</h1>
+<div class="container">
+  <div class="wrapper half"
+    <div class="row">
+      <div class="col-md-12">
+        <h3><%= @character.name %></h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <h4>AC: <%= @character.ac %></h4>
+      </div>
+      <div class="col-md-3">
+        <h4>HP: <%= @character.hp %></h4>
+      </div>
+      <div class="col-md-3">
+        <h4>Passive Perception: <%= @character.passive_perception %></h4>
+      </div>
+      <div class="col-md-3">
+        <h4>XP: <%= @character.xp %></h4>
+      </div>
+      <div class="col-md-12">
+        <h4><%= @character.stats %></h4>
+      </div>
+      <div class="col-md-12">
+        <h4><%= @character.notes %></h4>
+      </div>
+    </div>
+  </div>
+  <h4> <a href="/campaigns/<%= @campaign.slug %>/characters/<%= @character.id %>/edit_character">Edit character</a> </h4>
+</div>
