@@ -54,6 +54,17 @@
       <br>
       <textarea name="character[notes]" rows="8" cols="80"><%= @character.notes %></textarea>
     </div>
-    <button type="submit" class="btn btn-default">Submit</button>
+    <div class="row login">
+      <div class="col-md-8">
+        <button type="submit" class="btn btn-default">Submit</button>
+      </div>
+      <div class="col-md-4">
+        <form class="" action="/campaigns/<%= @campaign.slug %>/characters/<%= @character.id %>/delete" method="post">
+          <input id="hidden" type="hidden" name="_method" value="delete">
+          <button type="submit" class="btn btn-warning">Delete Character</button>
+        </form>
+      </div>
+    </div>
+
   </form>
 </div>
