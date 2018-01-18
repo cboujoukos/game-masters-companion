@@ -8,7 +8,7 @@
   <h3><a href="/campaigns/new">Start a New Campaign!</a></h3>
 
   <dl><% current_user.campaigns.each do |c| %>
-    <dt><a href="/campaigns/<%= c.slug %>"><!-- link to campaign show page --><%= c.name %></a></dt>
+    <dt><a href="/campaigns/<%= c.slug %>"><%= c.name %></a></dt>
     <dd><%= c.notes %></dd>
     <br>
     <% end %>
