@@ -53,4 +53,15 @@ class CharactersController < ApplicationController
     redirect "/campaigns/#{@campaign.slug}/characters/#{@character.id}"
   end
 
+  delete "/campaigns/:slug/characters/:id/delete" do
+    @campaign = Campaign.find_by_slug(params[:slug])
+    @character = Character.find(params[:id])
+    if current_user.id == session[:id]
+      @character.delete
+      redirect "campaigns/#{@campaign.slug}"
+    else
+      redirect '/'
+    end
+  end
+
 end

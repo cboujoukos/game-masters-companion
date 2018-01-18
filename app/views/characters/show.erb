@@ -36,5 +36,9 @@
         <h4><a href="/campaigns/<%= @campaign.slug %>">Back to Campaign</a></h4>
       </div>
     </div>
+    <form class="" action="/campaigns/<%= @campaign.slug %>/characters/<%= @character.id %>/delete" method="post">
+      <input id="hidden" type="hidden" name="_method" value="delete">
+      <button type="submit" class="btn btn-warning">Delete Character</button>
+    </form>
   </div>
 </div>
