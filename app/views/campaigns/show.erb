@@ -8,7 +8,7 @@
 <br>
 
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-4">
     <h4>Players</h4>
     <dl><% @campaign.characters.each do |char| %>
       <% if !!char.is_player %>
@@ -32,7 +32,7 @@
     <h3> <a href="/campaigns/<%= @campaign.slug %>/edit">Edit this campaign</a>
     </h3>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-4">
     <h4>Encounters</h4>
       <dl><% @campaign.encounters.each do |en| %>
         <dt><a href="/campaigns/<%= @campaign.slug %>/encounters/<%= en.id    %>"><%= en.name %></a></dt>
@@ -41,5 +41,29 @@
     </dl>
     <br>
     <p><a href="/campaigns/<%= @campaign.slug %>/create_encounter">Add Encounter</a></p>
+  </div>
+  <div class="col-md-4">
+    <h4>Enemies</h4>
+    <dl><% @campaign.enemies.each do |enemy| %>
+      <dt> <a href="#"><%= enemy.category %></a> </dt>
+      <div class="row">
+        <div class="col-md-4">
+          <dd>CR: <%= enemy.cr %></dd>
+        </div>
+        <div class="col-md-4">
+          <dd>HP: <%= enemy.hp %></dd>
+        </div>
+        <div class="col-md-4">
+          <dd>AC: <%= enemy.ac %></dd>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <dd>Damage: <%= enemy.damage %></dd>
+        </div>
+      </div>
+      <% end %>
+    </dl>
+    <p><a href="/campaigns/<%= @campaign.slug %>/create_enemy">Add Enemy</a></p>
   </div>
 </div> <!-- End of Row -->

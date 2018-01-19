@@ -3,7 +3,7 @@ class EnemiesController < ApplicationController
   get "/campaigns/:slug/create_enemy" do
     @campaign = Campaign.find_by_slug(params[:slug])
     if logged_in?
-      erb :'/characters/new'
+      erb :'/enemies/new'
     else
       redirect '/'
     end

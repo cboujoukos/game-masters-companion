@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180119154749) do
+ActiveRecord::Schema.define(version: 20180119160855) do
 
   create_table "campaigns", force: :cascade do |t|
     t.string "name"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20180119154749) do
     t.integer "campaign_id"
     t.string "passive_perception"
     t.string "stats"
+    t.string "cr"
   end
 
   create_table "users", force: :cascade do |t|
