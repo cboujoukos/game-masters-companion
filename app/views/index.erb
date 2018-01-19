@@ -18,26 +18,23 @@
     </div>
     <div class="col-md-4">
       <h3><a href="/campaigns/new">Start a New Campaign!</a></h3>
+      <br><br>
     </div>
   </div>
   <div class="row">
     <div class="col-md-8">
       <h3>Your Campaigns</h3>
+      <div class="col-md-8">
+        <dl><% current_user.campaigns.reverse.each do |c| %>
+          <dt><a href="/campaigns/<%= c.slug %>"><%= c.name %></a></dt>
+          <dd><%= c.notes %></dd>
+          <br>
+          <% end %>
+        </dl>
+      </div>
     </div>
     <div class="col-md-4">
       <h3>Recent Encounters</h3>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-8">
-      <dl><% current_user.campaigns.reverse.each do |c| %>
-        <dt><a href="/campaigns/<%= c.slug %>"><%= c.name %></a></dt>
-        <dd><%= c.notes %></dd>
-        <br>
-        <% end %>
-      </dl>
-    </div>
-    <div class="col-md-4">
       <dl><% current_user.encounters.reverse.each do |enc| %>
         <dt><a href="/campaigns/<%= enc.campaign.slug %>"><%= enc.name %></a></dt>
         <dd><%= enc.notes %></dd>
@@ -46,4 +43,5 @@
       </dl>
     </div>
   </div>
+  
 </div>
