@@ -44,25 +44,31 @@
   </div>
   <div class="col-md-4">
     <h4>Enemies</h4>
-    <dl><% @campaign.enemies.each do |enemy| %>
-      <dt> <a href="#"><%= enemy.category %></a> </dt>
-      <div class="row">
-        <div class="col-md-4">
-          <dd>CR: <%= enemy.cr %></dd>
+    <dl><% @campaign.enemies.each.with_index do |enemy,i| %>
+      <% if i > @campaign.enemies.length - 5 %>
+        <dt> <a href="#"><%= enemy.category %></a> </dt>
+        <div class="row">
+          <div class="col-md-4">
+            <dd>CR: <%= enemy.cr %></dd>
+          </div>
+          <div class="col-md-4">
+            <dd>HP: <%= enemy.hp %></dd>
+          </div>
+          <div class="col-md-4">
+            <dd>AC: <%= enemy.ac %></dd>
+          </div>
         </div>
-        <div class="col-md-4">
-          <dd>HP: <%= enemy.hp %></dd>
+        <div class="row">
+          <div class="col-md-8">
+            <dd>Damage: <%= enemy.damage %></dd>
+          </div>
+          <div class="col-md-4">
+            <dd>Perception: <%= enemy.passive_perception %></dd>
+          </div>
         </div>
-        <div class="col-md-4">
-          <dd>AC: <%= enemy.ac %></dd>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <dd>Damage: <%= enemy.damage %></dd>
-        </div>
-      </div>
+        <br>
       <% end %>
+    <% end %>
     </dl>
     <p><a href="/campaigns/<%= @campaign.slug %>/create_enemy">Add Enemy</a></p>
   </div>

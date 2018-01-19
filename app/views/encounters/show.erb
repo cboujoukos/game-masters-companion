@@ -1,13 +1,29 @@
 <% content_for :title do %>
   Game Master's Companion
 <% end %>
-
-<h3><%= @encounter.name %></h3>
-<h4>&ensp;-<%= @encounter.notes %></h4>
-<h4>Loot: <%= @encounter.loot %></h4>
-<% @encounter.characters.each do |char| %>
-  <p><%= char.name %></p>
-<% end %>
+<div class="row">
+  <div class="col-md-12">
+    <h3><%= @encounter.name %></h3>
+    <h4>&ensp;-<%= @encounter.notes %></h4>
+    <h4>Loot: <%= @encounter.loot %></h4>
+  </div>
+</div>
+<br><br>
+<div class="row">
+  <div class="col-md-8">
+    <h4>Party Members</h4>
+    <% @encounter.characters.each do |char| %>
+      <p><%= char.name %></p>
+    <% end %>
+  </div>
+  <div class="col-md-4">
+    <h4>Enemies</h4>
+    <% @encounter.enemies.each do |enemy| %>
+      <p><%= enemy.category %></p>
+    <% end %>
+  </div>
+</div>
+<br><br><br>
 
 <div class="row">
   <div class="col-md-8">

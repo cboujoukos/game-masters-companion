@@ -13,7 +13,7 @@ class EnemiesController < ApplicationController
     @user = User.find(session[:id])
     @campaign = Campaign.find_by_slug(params[:slug])
     @enemy = Enemy.new(params[:enemy])
-    if @enemy.name != ""
+    if @enemy.category != ""
       @enemy.campaign_id = @campaign.id
       @enemy.save
       redirect "/campaigns/#{@campaign.slug}"

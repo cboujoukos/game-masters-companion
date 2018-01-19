@@ -63,17 +63,17 @@
             <span class="caret"></span>
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-            <li><a href="#">Action</a></li>
+            <li><a href="/campaigns/<%= @campaign.slug %>">Action</a></li>
             <li><a href="#">Another action</a></li>
             <li><a href="#">Something else here</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="#">Separated link</a></li>
           </ul>
         </div>
-        <% @campaign.enemies.each do |en| %>
+        <% @campaign.enemies.each do |enemy| %>
           <div class="checkbox">
             <label>
-              <input type="checkbox" name="encounter_enemies[]" value="<%= en.id %>"> <%= en.name %>
+              <input type="checkbox" name="encounter_enemies[]" value="<%= enemy.id %>"> <%= en.category %>
             </label>
           </div>
         <% end %>

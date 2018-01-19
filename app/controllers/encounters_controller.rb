@@ -41,6 +41,7 @@ class EncountersController < ApplicationController
     @campaign = Campaign.find_by_slug(params[:slug])
     @encounter = Encounter.find(params[:id])
     @encounter_character_ids = @encounter.characters.collect{|char| char.id}
+    @encounter_enemy_ids = @encounter.enemies.collect{|enemy| enemy.id}
     if logged_in?
       erb :'/encounters/edit'
     else
@@ -56,6 +57,10 @@ class EncountersController < ApplicationController
     @encounter.characters = []
     params[:encounter_characters].each do |char|
       @encounter.characters << Character.find(char)
+    end
+    @encounter.enemies = []
+    params[:encounter_enemies].each do |enemy|
+      @encounter.enemies << Enemy.find(enemy)
     end
     #@encounter_character_ids = @encounter.characters.collect{|char| char.id}
     if @encounter.name != ""
