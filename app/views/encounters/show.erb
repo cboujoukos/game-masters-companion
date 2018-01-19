@@ -3,7 +3,7 @@
 <% end %>
 
 <h3><%= @encounter.name %></h3>
-<h4><%= @encounter.notes %></h4>
+<h4>&ensp;-<%= @encounter.notes %></h4>
 <h4>Loot: <%= @encounter.loot %></h4>
 <% @encounter.characters.each do |char| %>
   <p><%= char.name %></p>
