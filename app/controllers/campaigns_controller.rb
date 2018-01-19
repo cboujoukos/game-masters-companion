@@ -1,4 +1,13 @@
 class CampaignsController < ApplicationController
+
+  get '/campaigns' do
+    if logged_in?
+      erb :'/campaigns/index'
+    else
+      redirect '/'
+    end
+  end
+
   get '/campaigns/new' do
     if logged_in?
       erb :'/campaigns/new'
