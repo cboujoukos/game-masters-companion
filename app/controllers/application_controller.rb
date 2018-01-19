@@ -17,6 +17,10 @@ class ApplicationController < Sinatra::Base
     end
   end
 
+  get '/encounter_generator' do
+    erb :encounter_generator
+  end
+
   helpers do
     def logged_in?
       !!session[:id]

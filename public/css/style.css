@@ -1,9 +1,24 @@
+html {
+  height: 100%;
+}
+
 .fixed-header {
   background-image: url("../img/ricepaper.png");
 }
 
 body {
-  background-image: url("../img/hexellence.png");
+  height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  background: rgba(194,214,229,1);
+background: -moz-linear-gradient(top, rgba(194,214,229,1) 0%, rgba(255,255,255,1) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(194,214,229,1)), color-stop(100%, rgba(255,255,255,1)));
+background: -webkit-linear-gradient(top, rgba(194,214,229,1) 0%, rgba(255,255,255,1) 100%);
+background: -o-linear-gradient(top, rgba(194,214,229,1) 0%, rgba(255,255,255,1) 100%);
+background: -ms-linear-gradient(top, rgba(194,214,229,1) 0%, rgba(255,255,255,1) 100%);
+background: linear-gradient(to bottom, rgba(194,214,229,1) 0%, rgba(255,255,255,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c2d6e5', endColorstr='#ffffff', GradientType=0 );
 }
 
 .login {
@@ -14,4 +29,26 @@ body {
     -webkit-box-sizing: border-box;
        -moz-box-sizing: border-box;
             box-sizing: border-box;
+}
+
+.boxit {
+  padding: 10px;
+  padding-left: 20px;
+  border: 2px solid black;
+  background-image: url("../img/hexellence.png");
+}
+
+.thin_box {
+  padding-left: 5px;
+  border: 1px solid black;
+  background-image: url("../img/hexellence.png");
+}
+
+#display {
+  height:205px;padding:4px;border:1px solid black;background-image: url("../img/hexellence.png");font:16px/26px Athelas, Garamond, Serif;overflow:auto;
+}
+
+#quill {
+  max-width:5%;
+  max-height: 5%;
 }

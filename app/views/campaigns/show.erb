@@ -2,27 +2,59 @@
   Game Master's Companion
 <% end %>
 
-<h3><%= @campaign.name %></h3>
+<div class="boxit"><h3><%= @campaign.name %></h3>
 <h4>&ensp;-<%= @campaign.setting %></h4>
 <p><%= @campaign.notes %></p>
-<br>
+<br></div>
 
 <div class="row">
   <div class="col-md-4">
     <h4>Players</h4>
-    <dl><% @campaign.characters.each do |char| %>
+    <dl class="thin_box"><% @campaign.characters.each do |char| %>
       <% if !!char.is_player %>
         <dt><a href="/campaigns/<%= @campaign.slug %>/characters/<%= char.id    %>"><%= char.name %></a></dt>
-        <dd><%= char.notes %></dd>
+        <div class="row">
+          <div class="col-md-4">
+            <dd>AC: <%= char.ac %></dd>
+          </div>
+          <div class="col-md-4">
+            <dd>HP: <%= char.hp %></dd>
+          </div>
+          <div class="col-md-4">
+            <dd>Perc: <%= char.passive_perception %></dd>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <dd>Stats: <%= char.stats %></dd>
+          </div>
+        </div>
         <br>
         <% end %>
       <% end %>
     </dl>
+
     <h4>NPCs</h4>
-    <dl><% @campaign.characters.each do |char| %>
+    <dl class="thin_box"><% @campaign.characters.each do |char| %>
       <% if !char.is_player %>
       <dt><a href="/campaigns/<%= @campaign.slug %>/characters/<%= char.id    %>"><%= char.name %></a></dt>
-      <dd><%= char.notes %></dd>
+      <div class="row">
+        <div class="col-md-4">
+          <dd>AC: <%= char.ac %></dd>
+        </div>
+        <div class="col-md-4">
+          <dd>HP: <%= char.hp %></dd>
+        </div>
+        <div class="col-md-4">
+          <dd>Perc: <%= char.passive_perception %></dd>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <dd>Stats: <%= char.stats %></dd>
+        </div>
+      </div>
+      <br>
       <% end %>
     <% end %>
     </dl>
@@ -32,17 +64,19 @@
   </div>
   <div class="col-md-4">
     <h4>Encounters</h4>
-      <dl><% @campaign.encounters.each do |en| %>
+      <dl class="thin_box"><% @campaign.encounters.each do |en| %>
         <dt><a href="/campaigns/<%= @campaign.slug %>/encounters/<%= en.id    %>"><%= en.name %></a></dt>
         <dd><%= en.notes %></dd>
+        <br>
       <% end %>
+      
     </dl>
-    <br>
+
     <p><a href="/campaigns/<%= @campaign.slug %>/create_encounter">Add Encounter</a></p>
   </div>
   <div class="col-md-4">
     <h4>Enemies</h4>
-    <dl><% @campaign.enemies.each.with_index do |enemy,i| %>
+    <dl class="thin_box"><% @campaign.enemies.each.with_index do |enemy,i| %>
       <% if i > @campaign.enemies.length - 5 %>
         <dt> <a href="#"><%= enemy.category %></a> </dt>
         <div class="row">

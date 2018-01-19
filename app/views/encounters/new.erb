@@ -73,7 +73,7 @@
         <% @campaign.enemies.each do |enemy| %>
           <div class="checkbox">
             <label>
-              <input type="checkbox" name="encounter_enemies[]" value="<%= enemy.id %>"> <%= en.category %>
+              <input type="checkbox" name="encounter_enemies[]" value="<%= enemy.id %>"> <%= enemy.category %>
             </label>
           </div>
         <% end %>

@@ -8,19 +8,39 @@
       <h2>Welcome to the game master's companion, <%= @user.username %></h2>
     </div>
   </div>
+  <br><br>
   <div class="row">
-    <div class="col-md-8">
-      <h3>Your Campaigns</h3>
+    <div class="col-md-6">
+      <div class="boxit"><h4>The Game Master's Companion is your one stop campaign manager for all of your pen and paper role-playing game needs. Create, maintain, and explore your very own worlds with this customizable GM tool. Track your encounters, or check out the Encounter Generator for more ideas. To get started, create a new campaign, or dive into one of your pre-existing worlds!</h4></div>
+    </div>
+    <div class="col-md-2">
+
     </div>
     <div class="col-md-4">
       <h3><a href="/campaigns/new">Start a New Campaign!</a></h3>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-8">
+      <h3>Your Campaigns</h3>
+    </div>
+    <div class="col-md-4">
+      <h3>Recent Encounters</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
       <dl><% current_user.campaigns.reverse.each do |c| %>
         <dt><a href="/campaigns/<%= c.slug %>"><%= c.name %></a></dt>
         <dd><%= c.notes %></dd>
+        <br>
+        <% end %>
+      </dl>
+    </div>
+    <div class="col-md-4">
+      <dl><% current_user.encounters.reverse.each do |enc| %>
+        <dt><a href="/campaigns/<%= enc.campaign.slug %>"><%= enc.name %></a></dt>
+        <dd><%= enc.notes %></dd>
         <br>
         <% end %>
       </dl>
