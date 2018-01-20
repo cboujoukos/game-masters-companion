@@ -11,7 +11,7 @@
   <div class="col-md-4">
     <h4>Players</h4>
     <dl class="thin_box"><% @campaign.characters.each do |char| %>
-      <% if !!char.is_player %>
+      <% if char.category == "player" %>
         <dt><a href="/campaigns/<%= @campaign.slug %>/characters/<%= char.id    %>"><%= char.name %></a></dt>
         <div class="row">
           <div class="col-md-4">
@@ -36,7 +36,7 @@
 
     <h4>NPCs</h4>
     <dl class="thin_box"><% @campaign.characters.each do |char| %>
-      <% if !char.is_player %>
+      <% if char.category == "npc" %>
       <dt><a href="/campaigns/<%= @campaign.slug %>/characters/<%= char.id    %>"><%= char.name %></a></dt>
       <div class="row">
         <div class="col-md-4">
@@ -63,39 +63,41 @@
     <br><br>
   </div>
   <div class="col-md-4">
-    <h4>Encounters</h4>
-      <dl class="thin_box"><% @campaign.encounters.reverse.each do |en| %>
-        <dt><a href="/campaigns/<%= @campaign.slug %>/encounters/<%= en.id    %>"><%= en.name %></a></dt>
-        <dd><%= en.notes %></dd>
-        <br>
+    <h4>Recent Encounters</h4>
+      <dl class="thin_box"><% @campaign.encounters.reverse.each.with_index do |en,i| %>
+        <% if i > @campaign.encounters.length - 4 %>
+          <dt><a href="/campaigns/<%= @campaign.slug %>/encounters/<%= en.id    %>"><%= en.name %></a></dt>
+          <dd><%= en.notes %></dd>
+          <br>
+        <% end %>
       <% end %>
-
     </dl>
 
+    <p><a href="#">View All Encounters</a></p>
     <p><a href="/campaigns/<%= @campaign.slug %>/create_encounter">Add Encounter</a></p>
   </div>
   <div class="col-md-4">
     <h4>Enemies</h4>
-    <dl class="thin_box"><% @campaign.enemies.each.with_index do |enemy,i| %>
-      <% if i > @campaign.enemies.length - 5 %>
-        <dt> <a href="#"><%= enemy.category %></a> </dt>
+    <dl class="thin_box"><% @campaign.characters.each.with_index do |char,i| %>
+      <% if char.category == "enemy" %>
+        <dt> <a href="#"><%= char.name %></a> </dt>
         <div class="row">
           <div class="col-md-4">
-            <dd>CR: <%= enemy.cr %></dd>
+            <dd>CR: <%= char.cr %></dd>
           </div>
           <div class="col-md-4">
-            <dd>HP: <%= enemy.hp %></dd>
+            <dd>HP: <%= char.hp %></dd>
           </div>
           <div class="col-md-4">
-            <dd>AC: <%= enemy.ac %></dd>
+            <dd>AC: <%= char.ac %></dd>
           </div>
         </div>
         <div class="row">
           <div class="col-md-8">
-            <dd>Damage: <%= enemy.damage %></dd>
+            <dd>Damage:</dd>
           </div>
           <div class="col-md-4">
-            <dd>Perception: <%= enemy.passive_perception %></dd>
+            <dd>Perception: <%= char.passive_perception %></dd>
           </div>
         </div>
         <br>

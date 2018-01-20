@@ -1,70 +1,81 @@
 <% content_for :title do %>
   Game Master's Companion
 <% end %>
-
-<div class="container">
-  <form class="" action="/campaigns/<%= @campaign.slug %>/characters/<%= @character.id %>" method="post">
-    <h2>Edit character</h2>
-    <div class="radio">
-      <label>
-        <input type="radio" name="character[is_player]" id="is_player" value="true"  checked><!--How to set which radio button checked-->
-        PC
-      </label>
-    </div>
-    <div class="radio">
-      <label>
-        <input type="radio" name="character[is_player]" id="is_player" value="false">
-        NPC
-      </label>
-    </div>
-    <div class="form-group login">
+<div class="row">
+  <div class="col-md-8">
+    <form class="" action="/campaigns/<%= @campaign.slug %>/characters/<%= @character.id %>" method="post">
+      <h2>Edit character</h2>
+      <div class="radio">
+        <label>
+          <input type="radio" name="character[category]" id="char_category" value="player"  <%= 'checked' if @character.category == 'player' %>><!--How to set which radio button checked-->
+          PC
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          <input type="radio" name="character[category]" id="char_category" value="npc" <%= 'checked' if @character.category == 'npc' %>>
+          NPC
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          <input type="radio" name="character[category]" id="char_category" value="enemy" <%= 'checked' if @character.category == 'enemy' %>>
+          Enemy
+        </label>
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-8">
+            <label for="Name">Name</label>
+            <input type="text" class="form-control" name="character[name]" id="character_name"    value="<%= @character.name %>">
+          </div>
+          <div class="col-md-4">
+            <label for="XP">Experience</label>
+            <input type="text" class="form-control" name="character[xp]" id="char_xp"    value="<%= @character.xp %>">
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-3">
+            <label for="AC">Armor Class</label>
+            <input type="text" class="form-control" name="character[ac]" id="char_ac"    value="<%= @character.ac %>">
+          </div>
+          <div class="col-md-3">
+            <label for="HP">Hit Points</label>
+            <input type="text" class="form-control" name="character[hp]" id="char_hp"    value="<%= @character.hp %>">
+          </div>
+          <div class="col-md-3">
+            <label for="pp">Perception</label>
+            <input type="text" class="form-control" name="character[passive_perception]" id="char_pp"    value="<%= @character.passive_perception %>">
+          </div>
+          <div class="col-md-3">
+            <label for="CR">Creature Rating</label>
+            <input type="text" class="form-control" name="character[cr]" id="char_cr"    value="<%= @character.cr %>">
+          </div>
+        </div> <!-- End of Row -->
+      </div>
+      <div class="form-group">
+        <label for="Stats">Stats</label>
+        <input type="text" class="form-control" name="character[stats]" id="character_stats"    value="<%= @character.stats %>">
+      </div>
+      <div class="form-group">
+        <label for="Notes">Notes</label>
+        <br>
+        <textarea name="character[notes]" class="form-control" rows="4" style="min-width: 100%"><%= @character.notes %></textarea>
+      </div>
       <div class="row">
-        <div class="col-md-8"
-          <label for="Name">Name</label>
-          <input type="text" class="form-control" name="character[name]" id="character_name"    value="<%= @character.name %>">
+        <div class="col-md-8">
+          <button type="submit" class="btn btn-default">Submit</button>
         </div>
-        <div class="col-md-4"
-          <label for="XP">Experience</label>
-          <input type="text" class="form-control" name="character[xp]" id="char_xp"    value="<%= @character.xp %>">
+        <div class="col-md-4">
+          <form class="" action="/campaigns/<%= @campaign.slug %>/characters/<%= @character.id %>/delete" method="post">
+            <input id="hidden" type="hidden" name="_method" value="delete">
+            <button type="submit" class="btn btn-warning">Delete Character</button>
+          </form>
         </div>
       </div>
-    </div>
-    <div class="form-group login">
-      <div class="row">
-        <div class="col-md-4"
-          <label for="AC">Armor Class</label>
-          <input type="text" class="form-control" name="character[ac]" id="char_ac"    value="<%= @character.ac %>">
-        </div>
-        <div class="col-md-4"
-          <label for="HP">Hit Points</label>
-          <input type="text" class="form-control" name="character[hp]" id="char_hp"    value="<%= @character.hp %>">
-        </div>
-        <div class="col-md-4"
-          <label for="pp">Perception</label>
-          <input type="text" class="form-control" name="character[passive_perception]" id="char_pp"    value="<%= @character.passive_perception %>">
-        </div>
-      </div> <!-- End of Row -->
-    </div>
-    <div class="form-group login">
-      <label for="Stats">Stats</label>
-      <input type="text" class="form-control" name="character[stats]" id="character_stats"    value="<%= @character.stats %>">
-    </div>
-    <div class="form-group login">
-      <label for="Notes">Notes</label>
-      <br>
-      <textarea name="character[notes]" rows="8" cols="80"><%= @character.notes %></textarea>
-    </div>
-    <div class="row login">
-      <div class="col-md-8">
-        <button type="submit" class="btn btn-default">Submit</button>
-      </div>
-      <div class="col-md-4">
-        <form class="" action="/campaigns/<%= @campaign.slug %>/characters/<%= @character.id %>/delete" method="post">
-          <input id="hidden" type="hidden" name="_method" value="delete">
-          <button type="submit" class="btn btn-warning">Delete Character</button>
-        </form>
-      </div>
-    </div>
 
-  </form>
+    </form>
+  </div>
 </div>

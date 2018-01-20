@@ -29,6 +29,7 @@ class EncountersController < ApplicationController
     @user = User.find(session[:id])
     @campaign = Campaign.find_by_slug(params[:slug])
     @encounter = Encounter.find(params[:id])
+    @enemies = @encounter.characters.map{|char| category == "enemy"}
     if logged_in?
       erb :'/encounters/show'
     else
