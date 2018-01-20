@@ -84,9 +84,90 @@
           </div>
         <% end %>
         <br><br>
-        <p><a href="#">Add a new enemy</a></p>
+        <!-- ########################################### -->
+        <div class="container">
+          <!-- Trigger the modal with a button -->
+          <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-default btn-lg" id="myBtn">Add New Enemy</button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header" style="padding:35px 50px;">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4>Add New Enemy</h4>
+                </div>
+                <div class="modal-body" style="padding:40px 50px;">
+                  <form role="form" action="/<%= @campaign.slug %>/enemies_from_popup" method="post">
+                    <div class="form-group">
+                      <div class="row">
+                        <div class="col-md-8"
+                          <label for="Category">Creature Type</label>
+                          <input type="text" class="form-control" name="enemy[category]" id="enemy_category"    placeholder="Type">
+                        </div>
+                        <div class="col-md-4"
+                          <label for="CR">Creature Rating</label>
+                          <input type="text" class="form-control" name="enemy[cr]" id="enemy_cr"    placeholder="CR">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="row">
+                        <div class="col-md-4"
+                          <label for="AC">Armor Class</label>
+                          <input type="text" class="form-control" name="enemy[ac]" id="enemy_ac"    placeholder="AC">
+                        </div>
+                        <div class="col-md-4"
+                          <label for="HP">Hit Points</label>
+                          <input type="text" class="form-control" name="enemy[hp]" id="enemy_hp"    placeholder="HP">
+                        </div>
+                        <div class="col-md-4"
+                          <label for="pp">Passive Perception</label>
+                          <input type="text" class="form-control" name="enemy[passive_perception]" id="enemy_pp"    placeholder="Perception">
+                        </div>
+                      </div> <!-- End of Row -->
+                    </div>
+                    <div class="form-group">
+                      <label for="Damage">Damage</label>
+                      <input type="text" class="form-control" name="enemy[damage]" id="enemy_damage"    placeholder="Damage">
+                    </div>
+                    <div class="form-group">
+                      <label for="Stats">Stats</label>
+                      <input type="text" class="form-control" name="enemy[stats]" id="enemy_stats"    placeholder="Stats">
+                    </div>
+                    <div class="form-group">
+                      <label for="Notes">Notes</label>
+                      <br>
+                      <textarea name="enemy[notes]" class="form-control" rows="4" style="min-width: 100%"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <!-- ########################################### -->
       </div>
     </div>
     <button type="submit" class="btn btn-default">Submit</button>
   </form>
 </div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script>
+$(document).ready(function(){
+    $("#myBtn").click(function(){
+        $("#myModal").modal();
+    });
+});
+</script>

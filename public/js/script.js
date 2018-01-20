@@ -1,7 +1,9 @@
+// Function to select random element from a given array
 function randomize(array) {
     return array[Math.floor(Math.random() * array.length)]
   }
 
+//Function to generate random encounter
 function generate() {
 
 

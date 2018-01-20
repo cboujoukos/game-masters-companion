@@ -1,6 +1,6 @@
 <h1>character show page</h1>
-<div class="container">
-  <div class="wrapper half"
+<div class="row">
+  <div class="col-md-8">
     <div class="row">
       <div class="col-md-12">
         <h3><%= @character.name %></h3>
@@ -40,5 +40,14 @@
       <input id="hidden" type="hidden" name="_method" value="delete">
       <button type="submit" class="btn btn-warning">Delete Character</button>
     </form>  -->
+  </div>
+  <div class="col-md-4">
+    <div class="thin_box"><h3>Encounter Log</h3>
+    <% @character.encounters.reverse.each do |enc| %>
+      <dl>
+        <dt><a href="/campaigns/<%= @campaign.slug %>/encounters/<%= enc.id %>"><%= enc.name %></a></dt>
+        <dd><%= enc.notes %></dd>
+      </dl>
+      <% end %></div>
   </div>
 </div>

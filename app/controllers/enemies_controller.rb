@@ -9,6 +9,22 @@ class EnemiesController < ApplicationController
     end
   end
 
+  post '/:slug/enemies_from_popup' do
+    @user = User.find(session[:id])
+    @campaign = Campaign.find_by_slug(params[:slug])
+    @enemy = Enemy.new(params[:enemy])
+    if @enemy.category != ""
+      @enemy.campaign_id = @campaign.id
+      @enemy.save
+      binding.pry
+      redirect "/campaigns/#{@campaign.slug}"
+    else
+      @enemy.category = "---"
+      @enemy.campaign_id = @campaign.id
+      @enemy.save
+    end
+  end
+
   post '/:slug/enemies' do
     @user = User.find(session[:id])
     @campaign = Campaign.find_by_slug(params[:slug])
@@ -21,6 +37,7 @@ class EnemiesController < ApplicationController
       redirect '/'
     end
   end
+
 
   get "/campaigns/:slug/enemies/:id" do
     @user = User.find(session[:id])

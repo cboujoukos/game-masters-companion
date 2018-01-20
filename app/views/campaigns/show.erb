@@ -64,12 +64,12 @@
   </div>
   <div class="col-md-4">
     <h4>Encounters</h4>
-      <dl class="thin_box"><% @campaign.encounters.each do |en| %>
+      <dl class="thin_box"><% @campaign.encounters.reverse.each do |en| %>
         <dt><a href="/campaigns/<%= @campaign.slug %>/encounters/<%= en.id    %>"><%= en.name %></a></dt>
         <dd><%= en.notes %></dd>
         <br>
       <% end %>
-      
+
     </dl>
 
     <p><a href="/campaigns/<%= @campaign.slug %>/create_encounter">Add Encounter</a></p>
