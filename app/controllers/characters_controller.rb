@@ -13,13 +13,32 @@ class CharactersController < ApplicationController
     @user = User.find(session[:id])
     @campaign = Campaign.find_by_slug(params[:slug])
     @character = Character.new(params[:character])
+    binding.pry
     if @character.name != ""
       @character.campaign_id = @campaign.id
       @character.save
-      redirect "/campaigns/#{@campaign.slug}"
-    else
-      redirect '/'
     end
+    if params[:attack_1][:name] != ""
+      @attack_1 = Attack.new(params[:attack_1])
+      @attack_1.character_id = @character.id
+      @attack_1.save
+    end
+    if params[:attack_2][:name] != ""
+      @attack_2 = Attack.new(params[:attack_2])
+      @attack_2.character_id = @character.id
+      @attack_2.save
+    end
+    if params[:attack_3][:name] != ""
+      @attack_3 = Attack.new(params[:attack_3])
+      @attack_3.character_id = @character.id
+      @attack_3.save
+    end
+    if params[:attack_4][:name] != ""
+      @attack_4 = Attack.new(params[:attack_4])
+      @attack_4.character_id = @character.id
+      @attack_4.save
+    end
+    redirect "/campaigns/#{@campaign.slug}"
   end
 
   get "/campaigns/:slug/characters/:id" do

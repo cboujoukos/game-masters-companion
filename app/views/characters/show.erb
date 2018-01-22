@@ -1,41 +1,60 @@
-<h1>character show page</h1>
+
 <div class="row">
   <div class="col-md-8">
     <div class="row">
       <div class="col-md-12">
-        <h3><%= @character.name %></h3>
+        <h2><%= @character.name %></h2>
       </div>
     </div>
     <div class="row">
       <div class="col-md-3">
-        <h4>AC: <%= @character.ac %></h4>
+        <h4>Armor Class: <%= @character.ac %></h4>
       </div>
       <div class="col-md-3">
-        <h4>HP: <%= @character.hp %></h4>
+        <h4>Hit Points: <%= @character.hp %></h4>
       </div>
       <div class="col-md-3">
         <h4>Passive Perception: <%= @character.passive_perception %></h4>
       </div>
       <div class="col-md-3">
-        <h4>XP: <%= @character.xp %></h4>
+        <% if @character.xp != "" %>
+          <h4>XP: <%= @character.xp %></h4>
+        <% end %>
       </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <span class="table-responsive">
+          <table class="table table-bordered table-condensed">
+            <tr>
+              <th>Attack</th>
+              <th>Attack Bonus</th>
+              <th>Damage</th>
+            </tr>
+            <% @character.attacks.each do |attack| %>
+              <tr>
+                <td><%= attack.name %></td>
+                <td><%= attack.to_hit %></td>
+                <td><%= attack.damage %></td>
+              </tr>
+            <% end %>
+          </table>
+        </span>
+      </div>
+    </div>
+    <div class="row">
       <div class="col-md-12">
         <h4>Stats: <%= @character.stats %></h4>
       </div>
+    </div>
+    <br>
+    <div class="row">
       <div class="col-md-12">
         <h4><%= @character.notes %></h4>
       </div>
     </div>
     <br><br>
-    <!-- LINKS -->
-    <div class="row">
-      <div class="col-md-8">
-        <h4> <a href="/campaigns/<%= @campaign.slug %>/characters/<%= @character.id %>/edit_character">Edit character</a> </h4>
-      </div>
-      <div class="col-md-4">
-        <h4><a href="/campaigns/<%= @campaign.slug %>">Back to Campaign</a></h4>
-      </div>
-    </div>
+
 <!--    <form class="" action="/campaigns/<%= @campaign.slug %>/characters/<%= @character.id %>/delete" method="post">
       <input id="hidden" type="hidden" name="_method" value="delete">
       <button type="submit" class="btn btn-warning">Delete Character</button>
@@ -49,5 +68,15 @@
         <dd><%= enc.notes %></dd>
       </dl>
       <% end %></div>
+  </div>
+</div>
+<!-- LINKS -->
+
+<div class="row">
+  <div class="col-md-8">
+    <h4> <a href="/campaigns/<%= @campaign.slug %>/characters/<%= @character.id %>/edit_character">Edit character</a> </h4>
+  </div>
+  <div class="col-md-4">
+    <h4><a href="/campaigns/<%= @campaign.slug %>">Back to Campaign</a></h4>
   </div>
 </div>
