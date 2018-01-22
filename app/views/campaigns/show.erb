@@ -8,35 +8,9 @@
 <br></div>
 
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-md-6"><div class="col-md-6">
     <h4>Players</h4>
-    <dl class="thin_box"><% @campaign.characters.each do |char| %>
-      <% if char.category == "player" %>
-        <dt><a href="/campaigns/<%= @campaign.slug %>/characters/<%= char.id    %>"><%= char.name %></a></dt>
-        <div class="row">
-          <div class="col-md-4">
-            <dd>AC: <%= char.ac %></dd>
-          </div>
-          <div class="col-md-4">
-            <dd>HP: <%= char.hp %></dd>
-          </div>
-          <div class="col-md-4">
-            <dd>Perc: <%= char.passive_perception %></dd>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <dd>Stats: <%= char.stats %></dd>
-          </div>
-        </div>
-        <br>
-        <% end %>
-      <% end %>
-    </dl>
-
-    <h4>NPCs</h4>
-    <dl class="thin_box"><% @campaign.characters.each do |char| %>
-      <% if char.category == "npc" %>
+    <dl class="thin_box"><% @players.each do |char| %>
       <dt><a href="/campaigns/<%= @campaign.slug %>/characters/<%= char.id    %>"><%= char.name %></a></dt>
       <div class="row">
         <div class="col-md-4">
@@ -55,29 +29,40 @@
         </div>
       </div>
       <br>
-      <% end %>
+    <% end %>
+    </dl>
+    <p><a href="/campaigns/<%= @campaign.slug %>/create_character">Add    Character</a></p>
+  </div>
+  <div class="col-md-6">
+    <h4>NPCs</h4>
+    <dl class="thin_box"><% @campaign.characters.each do |char| %>
+      <dt><a href="/campaigns/<%= @campaign.slug %>/characters/<%= char.id    %>"><%= char.name %></a></dt>
+      <div class="row">
+        <div class="col-md-4">
+          <dd>AC: <%= char.ac %></dd>
+        </div>
+        <div class="col-md-4">
+          <dd>HP: <%= char.hp %></dd>
+        </div>
+        <div class="col-md-4">
+          <dd>Perc: <%= char.passive_perception %></dd>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <dd>Stats: <%= char.stats %></dd>
+        </div>
+      </div>
+      <br>
     <% end %>
     </dl>
 
-    <p><a href="/campaigns/<%= @campaign.slug %>/create_character">Add    Character</a></p>
+    <p><a href="/campaigns/<%= @campaign.slug %>/create_character">Add Friendly NPC</a></p>
     <br><br>
-  </div>
-  <div class="col-md-4">
-    <h4>Recent Encounters</h4>
-      <dl class="thin_box"><% @campaign.encounters.reverse.each.with_index do |en,i| %>
-        <% if i > @campaign.encounters.length - 4 %>
-          <dt><a href="/campaigns/<%= @campaign.slug %>/encounters/<%= en.id    %>"><%= en.name %></a></dt>
-          <dd><%= en.notes %></dd>
-          <br>
-        <% end %>
-      <% end %>
-    </dl>
+  </div></div>
 
-    <p><a href="#">View All Encounters</a></p>
-    <p><a href="/campaigns/<%= @campaign.slug %>/create_encounter">Add Encounter</a></p>
-  </div>
-  <div class="col-md-4">
-    <h4>Enemies</h4>
+  <div class="col-md-6"><div class="col-md-6">
+    <h4>Recent Enemies</h4>
     <dl class="thin_box"><% @campaign.characters.each.with_index do |char,i| %>
       <% if char.category == "enemy" %>
         <dt> <a href="#"><%= char.name %></a> </dt>
@@ -106,6 +91,20 @@
     </dl>
     <p><a href="/campaigns/<%= @campaign.slug %>/create_enemy">Add Enemy</a></p>
   </div>
+  <div class="col-md-6">
+    <h4>Recent Encounters</h4>
+      <dl class="thin_box"><% @campaign.encounters.reverse.each.with_index do |en,i| %>
+        <% if i > @campaign.encounters.length - 4 %>
+          <dt><a href="/campaigns/<%= @campaign.slug %>/encounters/<%= en.id    %>"><%= en.name %></a></dt>
+          <dd><%= en.notes %></dd>
+          <br>
+        <% end %>
+      <% end %>
+    </dl>
+
+    <p><a href="#">View All Encounters</a></p>
+    <p><a href="/campaigns/<%= @campaign.slug %>/create_encounter">Add Encounter</a></p>
+  </div></div>
 </div> <!-- End of Row -->
 <div class="row">
   <div class="col-md-8">

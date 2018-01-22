@@ -3,7 +3,19 @@ html {
 }
 
 .fixed-header {
-  background-image: url("../img/ricepaper.png");
+  background-image: url("../img/congruent_outline.png");
+}
+
+#quill {
+  max-width:4%;
+  max-height: 4%;
+  float: left;
+}
+
+#page-title {
+  font-family: 'Macondo', cursive;
+  color: rgb(91, 154, 255);
+  float: left;
 }
 
 body {
@@ -35,21 +47,16 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c2d6e5', end
   padding: 10px;
   padding-left: 20px;
   border: 1px solid black;
-  background-image: url("../img/hexellence.png");
+  background-image: url("../img/concrete_seamless.png");
 }
 /* background-image: url("../img/hexellence.png"); */
 
 .thin_box {
   padding-left: 5px;
   border: 1px solid black;
-  background-image: url("../img/hexellence.png");
+  background-image: url("../img/concrete_seamless.png");
 }
 
 #display {
-  height:205px;padding:4px;border:1px solid black;background-image: url("../img/hexellence.png");font:16px/26px Athelas, Garamond, Serif;overflow:auto;
-}
-
-#quill {
-  max-width:5%;
-  max-height: 5%;
+  height:205px;padding:4px;border:1px solid black;background-image: url("../img/concrete_seamless.png");font:16px/26px Athelas, Garamond, Serif;overflow:auto;
 }
