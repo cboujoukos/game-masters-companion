@@ -31,9 +31,10 @@ class CampaignsController < ApplicationController
   get '/campaigns/:slug' do
     if logged_in?
       @campaign = Campaign.find_by_slug(params[:slug])
-      @players = @campaign.characters.map{|ch| ch if ch.category == "player"}
-      @npcs = @campaign.characters.map{|ch| ch if ch.category == "npc"}
-      @enemies = @campaign.characters.map{|ch| ch if ch.category == "enemy"}
+      @encounters = @campaign.encounters
+      @players = @campaign.characters.select{|ch| ch.category == "player"}.map{|ch| ch}
+      @npcs = @campaign.characters.select{|ch| ch.category == "npc"}.map{|ch| ch}
+      @enemies = @campaign.characters.select{|ch| ch.category == "enemy"}.map{|ch| ch}
       erb :'/campaigns/show'
     else
       redirect '/'
