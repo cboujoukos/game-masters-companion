@@ -10,7 +10,7 @@
 <div class="row">
   <div class="col-md-6">
     <h4>Players</h4>
-    <dl class="thin_box"><% @players.each do |char| %>
+    <dl class=""><% @players.each do |char| %>
       <dt><a href="/campaigns/<%= @campaign.slug %>/characters/<%= char.id %>"><%= char.name %></a></dt>
       <div class="row">
         <div class="col-md-4">
@@ -35,7 +35,7 @@
   </div>
   <div class="col-md-5 col-md-offset-1">
     <h4>Recent Encounters</h4>
-      <dl class="thin_box"><% @encounters.reverse[0..2].each do |en| %>
+      <dl class=""><% @encounters.reverse[0..2].each do |en| %>
         <dt><a href="/campaigns/<%= @campaign.slug %>/encounters/<%= en.id    %>"><%= en.name %></a></dt>
         <dd><%= en.notes %></dd>
         <br>
@@ -56,7 +56,7 @@
 
   <div class="col-md-6">
     <h4>NPCs</h4>
-    <dl class="thin_box"><% @npcs.each do |char| %>
+    <dl class=""><% @npcs.each do |char| %>
       <dt><a href="/campaigns/<%= @campaign.slug %>/characters/<%= char.id    %>"><%= char.name %></a></dt>
       <div class="row">
         <div class="col-md-4">
@@ -83,7 +83,7 @@
   </div>
   <div class="col-md-5 col-md-offset-1">
     <h4>Recent Enemies</h4>
-    <dl class="thin_box"><% @enemies.reverse[0..4].each do |char| %>
+    <dl class=""><% @enemies.reverse[0..4].each do |char| %>
       <dt> <a href="#"><%= char.name %></a> </dt>
       <div class="row">
         <div class="col-md-4">

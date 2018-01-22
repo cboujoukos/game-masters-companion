@@ -35,13 +35,14 @@
     </div>
     <div class="col-md-4">
       <h3>Recent Encounters</h3>
-      <dl><% current_user.encounters.reverse.each do |enc| %>
+      <dl><% current_user.encounters.reverse[0..3].each do |enc| %>
         <dt><a href="/campaigns/<%= enc.campaign.slug %>"><%= enc.name %></a></dt>
-        <dd><%= enc.notes %></dd>
+        <dd class="underline">Campaign: <%= enc.campaign.name %></dd>
+        <dd>- <%= enc.notes %></dd>
         <br>
         <% end %>
       </dl>
     </div>
   </div>
-  
+
 </div>

@@ -11,6 +11,7 @@ class ApplicationController < Sinatra::Base
   get '/' do
     if logged_in?
       @user = User.find(session[:id])
+      @campaigns = @user.campaigns
       erb :index
     else
       erb :'/users/login'

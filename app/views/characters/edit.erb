@@ -2,12 +2,13 @@
   Game Master's Companion
 <% end %>
 <div class="row">
-  <div class="col-md-8">
+  <div class="col-md-12">
     <form class="" action="/campaigns/<%= @campaign.slug %>/characters/<%= @character.id %>" method="post">
-      <h2>Edit character</h2>
+      <input id="hidden" type="hidden" name="_method" value="patch">
+      <h2>Edit Character</h2>
       <div class="radio">
         <label>
-          <input type="radio" name="character[category]" id="char_category" value="player"  <%= 'checked' if @character.category == 'player' %>><!--How to set which radio button checked-->
+          <input type="radio" name="character[category]" id="char_category" value="player"  <%= 'checked' if @character.category == 'player' %>>
           PC
         </label>
       </div>
@@ -23,59 +24,125 @@
           Enemy
         </label>
       </div>
-      <div class="form-group">
-        <div class="row">
-          <div class="col-md-8">
-            <label for="Name">Name</label>
-            <input type="text" class="form-control" name="character[name]" id="character_name"    value="<%= @character.name %>">
-          </div>
-          <div class="col-md-4">
-            <label for="XP">Experience</label>
-            <input type="text" class="form-control" name="character[xp]" id="char_xp"    value="<%= @character.xp %>">
-          </div>
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="row">
-          <div class="col-md-3">
-            <label for="AC">Armor Class</label>
-            <input type="text" class="form-control" name="character[ac]" id="char_ac"    value="<%= @character.ac %>">
-          </div>
-          <div class="col-md-3">
-            <label for="HP">Hit Points</label>
-            <input type="text" class="form-control" name="character[hp]" id="char_hp"    value="<%= @character.hp %>">
-          </div>
-          <div class="col-md-3">
-            <label for="pp">Perception</label>
-            <input type="text" class="form-control" name="character[passive_perception]" id="char_pp"    value="<%= @character.passive_perception %>">
-          </div>
-          <div class="col-md-3">
-            <label for="CR">Creature Rating</label>
-            <input type="text" class="form-control" name="character[cr]" id="char_cr"    value="<%= @character.cr %>">
-          </div>
-        </div> <!-- End of Row -->
-      </div>
-      <div class="form-group">
-        <label for="Stats">Stats</label>
-        <input type="text" class="form-control" name="character[stats]" id="character_stats"    value="<%= @character.stats %>">
-      </div>
-      <div class="form-group">
-        <label for="Notes">Notes</label>
-        <br>
-        <textarea name="character[notes]" class="form-control" rows="4" style="min-width: 100%"><%= @character.notes %></textarea>
-      </div>
-      <div class="row">
-        <div class="col-md-8">
-          <button type="submit" class="btn btn-default">Submit</button>
-        </div>
-        <div class="col-md-4">
-          <form class="" action="/campaigns/<%= @campaign.slug %>/characters/<%= @character.id %>/delete" method="post">
-            <input id="hidden" type="hidden" name="_method" value="delete">
-            <button type="submit" class="btn btn-warning">Delete Character</button>
-          </form>
-        </div>
-      </div>
 
-    </form>
-  </div>
+    <div class="row">
+      <div class="col-md-7">
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-9">
+              <label for="Name">Name</label>
+              <input type="text" class="form-control" name="character[name]" id="character_name" value="<%= @character.name %>">
+            </div>
+            <div class="col-md-3">
+              <label for="XP">Experience</label>
+              <input type="text" class="form-control" name="character[xp]" id="char_xp"    value="<%= @character.xp %>">
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-3">
+              <label for="AC">Armor Class</label>
+              <input type="text" class="form-control" name="character[ac]" id="char_ac"    value="<%= @character.ac %>">
+            </div>
+            <div class="col-md-3">
+              <label for="HP">Hit Points</label>
+              <input type="text" class="form-control" name="character[hp]" id="char_hp" value="<%= @character.hp %>">
+            </div>
+            <div class="col-md-3">
+              <label for="pp">Perception</label>
+              <input type="text" class="form-control" name="character[passive_perception]" id="char_pp"    value="<%= @character.passive_perception %>">
+            </div>
+            <div class="col-md-3">
+              <label for="CR">Creature Rating</label>
+              <input type="text" class="form-control" name="character[cr]" id="char_cr" value="<%= @character.cr %>">
+            </div>
+          </div> <!-- End of Row -->
+        </div>
+
+        <div class="form-group">
+          <label for="Stats">Stats</label>
+          <input type="text" class="form-control" name="character[stats]" id="character_stats" value="<%= @character.stats %>">
+        </div>
+        <div class="form-group">
+          <label for="Notes">Notes</label>
+          <br>
+          <textarea name="character[notes]" class="form-control" rows="4" style="min-width: 100%"><%= @character.notes %></textarea>
+        </div>
+
+      </div>
+      <div class="col-md-5">
+        <div class="form-group">
+
+          <div class="row">
+            <div class="col-md-4">
+              <label for="AC">Attack</label>
+              <input type="text" class="form-control" name="attack_1[name]" id="attack_1_name" value="<%= @attacks.length >= 1 ? @attacks[0].name : "" %>">
+            </div>
+            <div class="col-md-4">
+              <label for="to_hit">To Hit</label>
+              <input type="text" class="form-control" name="attack_1[to_hit]" id="attack_1_to_hit" value="<%= @attacks.length >= 1 ? @attacks[0].to_hit : "" %>">
+            </div>
+            <div class="col-md-4">
+              <label for="damage">Damage</label>
+              <input type="text" class="form-control" name="attack_1[damage]" id="attack_1_damage" value="<%= @attacks.length >= 1 ? @attacks[0].damage : "" %>">
+            </div>
+          </div> <!-- End of Attack Row -->
+          <div class="row">
+            <div class="col-md-4">
+              <label for="AC">Attack</label>
+              <input type="text" class="form-control" name="attack_2[name]" id="attack_2_name" value="<%= @attacks.length >= 2 ? @attacks[1].name : "" %>">
+            </div>
+            <div class="col-md-4">
+              <label for="to_hit">To Hit</label>
+              <input type="text" class="form-control" name="attack_2[to_hit]" id="attack_2_to_hit" value="<%= @attacks.length >= 2 ? @attacks[1].to_hit : "" %>">
+            </div>
+            <div class="col-md-4">
+              <label for="damage">Damage</label>
+              <input type="text" class="form-control" name="attack_2[damage]" id="attack_2_damage" value="<%= @attacks.length >= 2 ? @attacks[1].damage : "" %>">
+            </div>
+
+          </div> <!-- End of Attack Row -->
+          <div class="row">
+            <div class="col-md-4">
+              <label for="AC">Attack</label>
+              <input type="text" class="form-control" name="attack_3[name]" id="attack_3_name" value="<%= @attacks.length >= 3 ? @attacks[2].name : "" %>">
+            </div>
+            <div class="col-md-4">
+              <label for="to_hit">To Hit</label>
+              <input type="text" class="form-control" name="attack_3[to_hit]" id="attack_3_to_hit" value="<%= @attacks.length >= 3 ? @attacks[2].to_hit : "" %>">
+            </div>
+            <div class="col-md-4">
+              <label for="damage">Damage</label>
+              <input type="text" class="form-control" name="attack_3[damage]" id="attack_3_damage" value="<%= @attacks.length >= 3 ? @attacks[2].damage : "" %>">
+            </div>
+
+          </div> <!-- End of Attack Row -->
+          <div class="row">
+            <div class="col-md-4">
+              <label for="AC">Attack</label>
+              <input type="text" class="form-control" name="attack_4[name]" id="attack_4_name" value="<%= @attacks.length >= 4 ? @attacks[3].name : "" %>">
+            </div>
+            <div class="col-md-4">
+              <label for="to_hit">To Hit</label>
+              <input type="text" class="form-control" name="attack_4[to_hit]" id="attack_4_to_hit" value="<%= @attacks.length >= 4 ? @attacks[3].to_hit : "" %>">
+            </div>
+            <div class="col-md-4">
+              <label for="damage">Damage</label>
+              <input type="text" class="form-control" name="attack_4[damage]" id="attack_4_damage" value="<%= @attacks.length >= 4 ? @attacks[3].damage : "" %>">
+            </div>
+
+          </div> <!-- End of Attack Row -->
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <button type="submit" class="btn btn-default">Submit</button>
+      </div>
+      <div class="col-md-2">
+        <p><a href="/campaigns/<%= @campaign.slug %>/characters/<%= @character.id %>">Cancel</a></p>
+      </div>
+    </div>
+  </form>
 </div>

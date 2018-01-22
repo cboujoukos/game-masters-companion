@@ -10,12 +10,17 @@
 </div>
 <br><br>
 <div class="row">
-  <div class="col-md-8">
+  <div class="col-md-12">
     <h4>Party Members</h4>
+    <table>
+      
+    </table>
     <% @encounter.characters.each do |char| %>
       <p><%= char.name %></p>
     <% end %>
   </div>
+</div>
+<div class="row"
   <div class="col-md-4">
     <h4>Enemies</h4>
     <% @enemies.each do |enemy| %>

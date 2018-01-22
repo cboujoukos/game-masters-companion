@@ -7,13 +7,13 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-3">
+      <div class="col-md-<%= @character.xp == "" ? 4 : 3%>">
         <h4>Armor Class: <%= @character.ac %></h4>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-<%= @character.xp == "" ? 4 : 3%>">
         <h4>Hit Points: <%= @character.hp %></h4>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-<%= @character.xp == "" ? 4 : 3%>">
         <h4>Passive Perception: <%= @character.passive_perception %></h4>
       </div>
       <div class="col-md-3">
@@ -21,27 +21,30 @@
           <h4>XP: <%= @character.xp %></h4>
         <% end %>
       </div>
+      <br>
     </div>
-    <div class="row">
-      <div class="col-md-12">
-        <span class="table-responsive">
-          <table class="table table-bordered table-condensed">
-            <tr>
-              <th>Attack</th>
-              <th>Attack Bonus</th>
-              <th>Damage</th>
-            </tr>
-            <% @character.attacks.each do |attack| %>
+    <% if !@character.attacks.empty? %>
+      <div class="row">
+        <div class="col-md-12">
+          <span class="table-responsive">
+            <table class="table table-bordered">
               <tr>
-                <td><%= attack.name %></td>
-                <td><%= attack.to_hit %></td>
-                <td><%= attack.damage %></td>
+                <th>Attack</th>
+                <th>Attack Bonus</th>
+                <th>Damage</th>
               </tr>
-            <% end %>
-          </table>
-        </span>
+              <% @character.attacks.each do |attack| %>
+                <tr>
+                  <td><%= attack.name %></td>
+                  <td><%= attack.to_hit %></td>
+                  <td><%= attack.damage %></td>
+                </tr>
+              <% end %>
+            </table>
+          </span>
+        </div>
       </div>
-    </div>
+    <% end %>
     <div class="row">
       <div class="col-md-12">
         <h4>Stats: <%= @character.stats %></h4>
@@ -49,8 +52,9 @@
     </div>
     <br>
     <div class="row">
-      <div class="col-md-12">
-        <h4><%= @character.notes %></h4>
+      <div class="col-md-12 border-left">
+        <h4>Notes:</h4>
+        <p><%= @character.notes %></p>
       </div>
     </div>
     <br><br>
@@ -61,8 +65,8 @@
     </form>  -->
   </div>
   <div class="col-md-4">
-    <div class="thin_box"><h3>Encounter Log</h3>
-    <% @character.encounters.reverse.each do |enc| %>
+    <div class="scroll-log"><h3>Encounter Log</h3>
+    <% @character.encounters.reverse[0..2].each do |enc| %>
       <dl>
         <dt><a href="/campaigns/<%= @campaign.slug %>/encounters/<%= enc.id %>"><%= enc.name %></a></dt>
         <dd><%= enc.notes %></dd>
