@@ -203,6 +203,37 @@ class CharactersController < ApplicationController
     redirect "/campaigns/#{@campaign.slug}/characters/#{@character.id}"
   end
 
+  post '/campaigns/:slug/encounters/:id/enemies_from_popup' do
+    @user = User.find(session[:id])
+    @campaign = Campaign.find_by_slug(params[:slug])
+    @encounter = Encounter.find(params[:id])
+    @enemy = Character.new(params[:character])
+    if @enemy.name != ""
+      @enemy.campaign_id = @campaign.id
+      @enemy.category = "enemy"
+      @enemy.save
+      binding.pry
+      redirect "/campaigns/#{@campaign.slug}/encounters/#{@encounter.id}/edit_encounter"
+    else
+      redirect '/'
+    end
+  end
+
+  post '/campaigns/:slug/encounters/new/enemies_from_popup' do
+    @user = User.find(session[:id])
+    @campaign = Campaign.find_by_slug(params[:slug])
+    @enemy = Character.new(params[:character])
+    if @enemy.name != ""
+      @enemy.campaign_id = @campaign.id
+      @enemy.category = "enemy"
+      @enemy.save
+      binding.pry
+      redirect "/campaigns/#{@campaign.slug}/create_encounter"
+    else
+      redirect '/'
+    end
+  end
+
 #  delete "/campaigns/:slug/characters/:id/delete" do
 #    @campaign = Campaign.find_by_slug(params[:slug])
 #    @character = Character.find(params[:id])

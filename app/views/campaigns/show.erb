@@ -2,122 +2,132 @@
   Game Master's Companion
 <% end %>
 
-<div class="boxit"><h3><%= @campaign.name %></h3>
-<h4>&ensp;-<%= @campaign.setting %></h4>
-<p><%= @campaign.notes %></p>
-<br></div>
-
 <div class="row">
-  <div class="col-md-6">
-    <h4>Players</h4>
-    <dl class=""><% @players.each do |char| %>
-      <dt><a href="/campaigns/<%= @campaign.slug %>/characters/<%= char.id %>"><%= char.name %></a></dt>
-      <div class="row">
-        <div class="col-md-4">
-          <dd>AC: <%= char.ac %></dd>
-        </div>
-        <div class="col-md-4">
-          <dd>HP: <%= char.hp %></dd>
-        </div>
-        <div class="col-md-4">
-          <dd>Perc: <%= char.passive_perception %></dd>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <dd>Stats: <%= char.stats %></dd>
-        </div>
-      </div>
-      <br>
-    <% end %>
-    </dl>
-    <p><a href="/campaigns/<%= @campaign.slug %>/create_character">Add Player Character</a></p>
+  <div class="col-md-12 boxit">
+    <h3><%= @campaign.name %></h3>
+    <h4>&ensp;-<%= @campaign.setting %></h4>
+    <p><%= @campaign.notes %></p>
+    <br>
   </div>
-  <div class="col-md-5 col-md-offset-1">
-    <h4>Recent Encounters</h4>
-      <dl class=""><% @encounters.reverse[0..2].each do |en| %>
-        <dt><a href="/campaigns/<%= @campaign.slug %>/encounters/<%= en.id    %>"><%= en.name %></a></dt>
-        <dd><%= en.notes %></dd>
+</div>
+<br>
+<div class="row">
+  <!-- ##################################################### -->
+  <div class="col-md-6">
+    <div class="row">
+      <div class="col-md-12 backdrop"><h4>Players</h4>
+      <dl class=""><% @players.each do |char| %>
+        <dt><a href="/campaigns/<%= @campaign.slug %>/characters/<%= char.id %>"><%= char.name %></a></dt>
+        <div class="row">
+          <div class="col-md-4">
+            <dd>AC: <%= char.ac %></dd>
+          </div>
+          <div class="col-md-4">
+            <dd>HP: <%= char.hp %></dd>
+          </div>
+          <div class="col-md-4">
+            <dd>Perc: <%= char.passive_perception %></dd>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <dd>Stats: <%= char.stats %></dd>
+          </div>
+        </div>
         <br>
       <% end %>
-    </dl>
+      </dl>
+      <p><a href="/campaigns/<%= @campaign.slug %>/create_character">Add Player Character</a></p></div>
+    </div>
     <div class="row">
-      <div class="col-md-4">
-        <p><a href="/campaigns/<%= @campaign.slug %>/encounters">View All Encounters</a></p>
-      </div>
-      <div class="col-md-4 col-md-offset-4">
-        <p><a href="/campaigns/<%= @campaign.slug %>/create_encounter">Add Encounter</a></p>
-      </div>
+      <div class="col-md-12 backdrop"><h4>NPCs</h4>
+      <dl class=""><% @npcs.reverse[0..3].each do |char| %>
+        <dt><a href="/campaigns/<%= @campaign.slug %>/characters/<%= char.id    %>"><%= char.name %></a></dt>
+        <div class="row">
+          <div class="col-md-4">
+            <dd>AC: <%= char.ac %></dd>
+          </div>
+          <div class="col-md-4">
+            <dd>HP: <%= char.hp %></dd>
+          </div>
+          <div class="col-md-4">
+            <dd>Perc: <%= char.passive_perception %></dd>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <dd>Stats: <%= char.stats %></dd>
+          </div>
+        </div>
+        <br>
+      <% end %>
+      </dl>
+
+      <p><a href="/campaigns/<%= @campaign.slug %>/create_character/npc">Add Friendly NPC</a></p></div>
+    </div>
+  </div>
+  <div class="col-md-5 col-md-offset-1">
+    <div class="row">
+      <div class="col-md-12 backdrop"><h4>Recent Encounters</h4>
+        <dl class=""><% @encounters.reverse[0..2].each do |en| %>
+          <dt><a href="/campaigns/<%= @campaign.slug %>/encounters/<%= en.id    %>"><%= en.name %></a></dt>
+          <dd><%= en.notes %></dd>
+          <br>
+        <% end %>
+      </dl>
+      <div class="row">
+        <div class="col-md-4">
+          <p><a href="/campaigns/<%= @campaign.slug %>/encounters">View All Encounters</a></p>
+        </div>
+        <div class="col-md-4 col-md-offset-4">
+          <p><a href="/campaigns/<%= @campaign.slug %>/create_encounter">Add Encounter</a></p>
+        </div>
+      </div></div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 backdrop"><h4>Recent Enemies</h4>
+      <dl class=""><% @enemies.reverse[0..3].each do |char| %>
+        <dt>
+          <div class="row">
+            <div class="col-md-8">
+              <a href="/campaigns/<%= @campaign.slug %>/characters/<%= char.id %>"><%= char.name %></a>
+            </div>
+            <div class="col-md-4">
+              CR: <%= char.cr %>
+            </div>
+          </div>
+        </dt>
+        <div class="row">
+          <div class="col-md-4">
+            <dd>Perception: <%= char.passive_perception %></dd>
+          </div>
+          <div class="col-md-4">
+            <dd>HP: <%= char.hp %></dd>
+          </div>
+          <div class="col-md-4">
+            <dd>AC: <%= char.ac %></dd>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <dd>Notes: <%= char.notes %></dd>
+          </div>
+        </div>
+        <br>
+      <% end %>
+      </dl>
+      <div class="row">
+        <div class="col-md-4">
+          <p><a href="/campaigns/<%= @campaign.slug %>/characters/enemies">View All Enemies</a></p>
+        </div>
+        <div class="col-md-4 col-md-offset-4">
+          <p><a href="/campaigns/<%= @campaign.slug %>/create_character/enemy">Add Enemy</a></p>
+        </div>
+      </div></div>
     </div>
   </div>
 
 </div>
-<div class="row">
-
-  <div class="col-md-6">
-    <h4>NPCs</h4>
-    <dl class=""><% @npcs.reverse[0..3].each do |char| %>
-      <dt><a href="/campaigns/<%= @campaign.slug %>/characters/<%= char.id    %>"><%= char.name %></a></dt>
-      <div class="row">
-        <div class="col-md-4">
-          <dd>AC: <%= char.ac %></dd>
-        </div>
-        <div class="col-md-4">
-          <dd>HP: <%= char.hp %></dd>
-        </div>
-        <div class="col-md-4">
-          <dd>Perc: <%= char.passive_perception %></dd>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <dd>Stats: <%= char.stats %></dd>
-        </div>
-      </div>
-      <br>
-    <% end %>
-    </dl>
-
-    <p><a href="/campaigns/<%= @campaign.slug %>/create_character/npc">Add Friendly NPC</a></p>
-    <br><br>
-  </div>
-  <div class="col-md-5 col-md-offset-1">
-    <h4>Recent Enemies</h4>
-    <dl class=""><% @enemies.reverse[0..3].each do |char| %>
-      <dt> <a href="/campaigns/<%= @campaign.slug %>/characters/<%= char.id %>"><%= char.name %></a> </dt>
-      <div class="row">
-        <div class="col-md-4">
-          <dd>CR: <%= char.cr %></dd>
-        </div>
-        <div class="col-md-4">
-          <dd>HP: <%= char.hp %></dd>
-        </div>
-        <div class="col-md-4">
-          <dd>AC: <%= char.ac %></dd>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-8">
-          <dd>Damage:</dd>
-        </div>
-        <div class="col-md-4">
-          <dd>Perception: <%= char.passive_perception %></dd>
-        </div>
-      </div>
-      <br>
-    <% end %>
-    </dl>
-    <div class="row">
-      <div class="col-md-4">
-        <p><a href="/campaigns/<%= @campaign.slug %>/characters/enemies">View All Enemies</a></p>
-      </div>
-      <div class="col-md-4 col-md-offset-4">
-        <p><a href="/campaigns/<%= @campaign.slug %>/create_character/enemy">Add Enemy</a></p>
-      </div>
-    </div>
-  </div>
-
-</div> <!-- End of Row -->
 <div class="row">
   <div class="col-md-4">
     <h3> <a href="/campaigns/<%= @campaign.slug %>/edit">Edit this campaign</a>

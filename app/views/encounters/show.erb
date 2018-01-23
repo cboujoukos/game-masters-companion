@@ -10,13 +10,13 @@
 </div>
 <br><br>
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-12 backdrop">
     <h4>Party Members</h4>
     <span class="table-responsive">
       <table class="table table-bordered">
         <tr>
           <% @players.each.with_index do |char, i| %>
-            <th><%= char.name %></th>
+            <th><a href="/campaigns/<%= @campaign.slug %>/characters/<%= char.id %>"><%= char.name %></a></th>
           <% end %>
         </tr>
         <tr>
@@ -31,10 +31,11 @@
         </tr>
       </table>
     </span>
+    <br>
   </div>
 </div>
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-md-4 backdrop">
     <h4>NPCs</h4>
     <% @npcs.each do |npc| %>
       <h5 class="emphasis"><%= npc.name %></h5>
@@ -74,7 +75,7 @@
       </div>
     <% end %>
   </div>
-  <div class="col-md-4 col-md-offset-4">
+  <div class="col-md-4 col-md-offset-4 backdrop">
     <h4>Enemies</h4>
     <% @enemies.each do |enemy| %>
       <h5 class="emphasis"><%= enemy.name %></h5>

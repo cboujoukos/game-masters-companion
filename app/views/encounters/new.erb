@@ -111,16 +111,16 @@
           <h4>Add New Enemy</h4>
         </div>
         <div class="modal-body" style="padding:40px 50px;">
-          <form role="form" action="/<%= @campaign.slug %>/enemies_from_popup" method="post">
+          <form role="form" action="/campaigns/<%= @campaign.slug %>/encounters/new/enemies_from_popup" method="post">
             <div class="form-group">
               <div class="row">
                 <div class="col-md-8">
-                  <label for="Category">Creature Type</label>
-                  <input type="text" class="form-control" name="enemy[category]" id="enemy_category"    placeholder="Type">
+                  <label for="Name">Name</label>
+                  <input type="text" class="form-control" name="character[name]" id="enemy_name"    placeholder="Name">
                 </div>
                 <div class="col-md-4">
                   <label for="CR">Creature Rating</label>
-                  <input type="text" class="form-control" name="enemy[cr]" id="enemy_cr"    placeholder="CR">
+                  <input type="text" class="form-control" name="character[cr]" id="enemy_cr"    placeholder="CR">
                 </div>
               </div>
             </div>
@@ -128,30 +128,26 @@
               <div class="row">
                 <div class="col-md-4">
                   <label for="AC">Armor Class</label>
-                  <input type="text" class="form-control" name="enemy[ac]" id="enemy_ac"    placeholder="AC">
+                  <input type="text" class="form-control" name="character[ac]" id="enemy_ac"    placeholder="AC">
                 </div>
                 <div class="col-md-4">
                   <label for="HP">Hit Points</label>
-                  <input type="text" class="form-control" name="enemy[hp]" id="enemy_hp"    placeholder="HP">
+                  <input type="text" class="form-control" name="character[hp]" id="enemy_hp"    placeholder="HP">
                 </div>
                 <div class="col-md-4">
                   <label for="pp">Passive Perception</label>
-                  <input type="text" class="form-control" name="enemy[passive_perception]" id="enemy_pp"    placeholder="Perception">
+                  <input type="text" class="form-control" name="character[passive_perception]" id="enemy_pp"    placeholder="Perception">
                 </div>
               </div> <!-- End of Row -->
             </div>
             <div class="form-group">
-              <label for="Damage">Damage</label>
-              <input type="text" class="form-control" name="enemy[damage]" id="enemy_damage"    placeholder="Damage">
-            </div>
-            <div class="form-group">
               <label for="Stats">Stats</label>
-              <input type="text" class="form-control" name="enemy[stats]" id="enemy_stats"    placeholder="Stats">
+              <input type="text" class="form-control" name="character[stats]" id="enemy_stats"    placeholder="Stats">
             </div>
             <div class="form-group">
               <label for="Notes">Notes</label>
               <br>
-              <textarea name="enemy[notes]" class="form-control" rows="4" style="min-width: 100%"></textarea>
+              <textarea name="character[notes]" class="form-control" rows="4" style="min-width: 100%"></textarea>
             </div>
             <button type="submit" class="btn btn-default">Submit</button>
           </form>
