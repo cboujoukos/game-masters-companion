@@ -2,7 +2,7 @@
   Game Master's Companion
 <% end %>
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-12 boxit">
     <h3><%= @encounter.name %></h3>
     <h4>&ensp;-<%= @encounter.notes %></h4>
     <h4>Loot: <%= @encounter.loot %></h4>
@@ -12,19 +12,106 @@
 <div class="row">
   <div class="col-md-12">
     <h4>Party Members</h4>
-    <table>
-      
-    </table>
-    <% @encounter.characters.each do |char| %>
-      <p><%= char.name %></p>
-    <% end %>
+    <span class="table-responsive">
+      <table class="table table-bordered">
+        <tr>
+          <% @players.each.with_index do |char, i| %>
+            <th><%= char.name %></th>
+          <% end %>
+        </tr>
+        <tr>
+          <% @players.each.with_index do |char, i| %>
+            <td>AC: <%= char.ac %></td>
+          <% end %>
+        </tr>
+        <tr>
+          <% @players.each.with_index do |char, i| %>
+            <td>Perception: <%= char.passive_perception %></td>
+          <% end %>
+        </tr>
+      </table>
+    </span>
   </div>
 </div>
-<div class="row"
+<div class="row">
   <div class="col-md-4">
+    <h4>NPCs</h4>
+    <% @npcs.each do |npc| %>
+      <h5 class="emphasis"><%= npc.name %></h5>
+      <div class="row">
+        <div class="col-md-6">
+          <p>AC: <%= npc.ac %></p>
+        </div>
+        <div class="col-md-6">
+          <p>HP: <%= npc.hp %></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <p>Stats: <%= npc.stats %></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <table class="table table-bordered">
+            <tr>
+              <% npc.attacks.each do |attack| %>
+                <th><%= attack.name %></th>
+              <% end %>
+            </tr>
+            <tr>
+              <% npc.attacks.each do |attack| %>
+                <td>Att. Bonus: <%= attack.to_hit %></td>
+              <% end %>
+            </tr>
+            <tr>
+              <% npc.attacks.each do |attack| %>
+                <td>Damage: <%= attack.damage %></td>
+              <% end %>
+            </tr>
+          </table>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-md-4 col-md-offset-4">
     <h4>Enemies</h4>
     <% @enemies.each do |enemy| %>
-      <p><%= enemy.name %></p>
+      <h5 class="emphasis"><%= enemy.name %></h5>
+      <div class="row">
+        <div class="col-md-6">
+          <p>AC: <%= enemy.ac %></p>
+        </div>
+        <div class="col-md-6">
+          <p>HP: <%= enemy.hp %></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <p>Stats: <%= enemy.stats %></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <table class="table table-bordered">
+            <tr>
+              <% enemy.attacks.each do |attack| %>
+                <th><%= attack.name %></th>
+              <% end %>
+            </tr>
+            <tr>
+              <% enemy.attacks.each do |attack| %>
+                <td>Att. Bonus: <%= attack.to_hit %></td>
+              <% end %>
+            </tr>
+            <tr>
+              <% enemy.attacks.each do |attack| %>
+                <td>Damage: <%= attack.damage %></td>
+              <% end %>
+            </tr>
+          </table>
+        </div>
+      </div>
     <% end %>
   </div>
 </div>

@@ -7,20 +7,20 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-<%= @character.xp == "" ? 4 : 3%>">
+      <div class="col-md-<%= @character.xp == "" || @character.xp == nil ? 4 : 3%>">
         <h4>Armor Class: <%= @character.ac %></h4>
       </div>
-      <div class="col-md-<%= @character.xp == "" ? 4 : 3%>">
+      <div class="col-md-<%= @character.xp == "" || @character.xp == nil ? 4 : 3%>">
         <h4>Hit Points: <%= @character.hp %></h4>
       </div>
-      <div class="col-md-<%= @character.xp == "" ? 4 : 3%>">
+      <div class="col-md-<%= @character.xp == "" || @character.xp == nil ? 4 : 3%>">
         <h4>Passive Perception: <%= @character.passive_perception %></h4>
       </div>
-      <div class="col-md-3">
-        <% if @character.xp != "" %>
+      <% if @character.xp != "" && @character.xp != nil %>
+        <div class="col-md-3">
           <h4>XP: <%= @character.xp %></h4>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
       <br>
     </div>
     <% if !@character.attacks.empty? %>
@@ -45,11 +45,13 @@
         </div>
       </div>
     <% end %>
-    <div class="row">
-      <div class="col-md-12">
-        <h4>Stats: <%= @character.stats %></h4>
+    <% if @character.stats != "" %>
+      <div class="row">
+        <div class="col-md-12">
+          <h4>Stats: <%= @character.stats %></h4>
+        </div>
       </div>
-    </div>
+    <% end %>
     <br>
     <div class="row">
       <div class="col-md-12 border-left">

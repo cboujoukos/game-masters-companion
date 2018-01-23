@@ -69,17 +69,36 @@
         <% @enemies.each do |char| %>
           <div class="checkbox">
             <label>
-              <input type="checkbox" name="encounter_enemies[]" value="<%= char.id %>"> <%= char.name %>
+              <input type="checkbox" name="encounter_characters[]" value="<%= char.id %>"> <%= char.name %>
             </label>
           </div>
         <% end %>
         <br><br>
 
+
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-5">
+        <button type="submit" class="btn btn-default">Submit</button>
+      </div>
+      <div class="col-md-2">
+        <p><a href="/campaigns/<%= @campaign.slug %>">Cancel</a></p>
+      </div>
+    </div>
+  </form>
+</div>
+
 <!-- ######## START OF POPUP FORM #########-->
 
 <div class="container">
   <!-- Trigger the modal with a button -->
-  <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-default btn-lg" id="myBtn">Add New Enemy</button>
+  <div class="row">
+    <div class="col-md-4 col-md-offset-8">
+      <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-default btn-lg" id="myBtn">Add New Enemy</button>
+    </div>
+  </div>
 
   <!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog">
@@ -95,11 +114,11 @@
           <form role="form" action="/<%= @campaign.slug %>/enemies_from_popup" method="post">
             <div class="form-group">
               <div class="row">
-                <div class="col-md-8"
+                <div class="col-md-8">
                   <label for="Category">Creature Type</label>
                   <input type="text" class="form-control" name="enemy[category]" id="enemy_category"    placeholder="Type">
                 </div>
-                <div class="col-md-4"
+                <div class="col-md-4">
                   <label for="CR">Creature Rating</label>
                   <input type="text" class="form-control" name="enemy[cr]" id="enemy_cr"    placeholder="CR">
                 </div>
@@ -107,15 +126,15 @@
             </div>
             <div class="form-group">
               <div class="row">
-                <div class="col-md-4"
+                <div class="col-md-4">
                   <label for="AC">Armor Class</label>
                   <input type="text" class="form-control" name="enemy[ac]" id="enemy_ac"    placeholder="AC">
                 </div>
-                <div class="col-md-4"
+                <div class="col-md-4">
                   <label for="HP">Hit Points</label>
                   <input type="text" class="form-control" name="enemy[hp]" id="enemy_hp"    placeholder="HP">
                 </div>
-                <div class="col-md-4"
+                <div class="col-md-4">
                   <label for="pp">Passive Perception</label>
                   <input type="text" class="form-control" name="enemy[passive_perception]" id="enemy_pp"    placeholder="Perception">
                 </div>
@@ -147,21 +166,6 @@
 </div>
 
   <!-- ######## END OF POPUP FORM #########-->
-
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-5">
-        <button type="submit" class="btn btn-default">Submit</button>
-      </div>
-      <div class="col-md-2">
-        <p><a href="/campaigns/<%= @campaign.slug %>">Cancel</a></p>
-      </div>
-    </div>
-  </form>
-</div>
-
-
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

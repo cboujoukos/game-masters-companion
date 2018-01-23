@@ -123,6 +123,17 @@ class CharactersController < ApplicationController
     redirect "/campaigns/#{@campaign.slug}"
   end
 
+  get "/campaigns/:slug/characters/enemies" do
+    @user = User.find(session[:id])
+    @campaign = Campaign.find_by_slug(params[:slug])
+    @enemies = @campaign.characters.select{|char| char.category == "enemy"}.map{|char| char}
+    if logged_in?
+      erb :'/characters/enemies_index'
+    else
+      redirect '/'
+    end
+  end
+
   get "/campaigns/:slug/characters/:id" do
     @user = User.find(session[:id])
     @campaign = Campaign.find_by_slug(params[:slug])
