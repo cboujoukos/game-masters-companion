@@ -3,7 +3,7 @@ class CharactersController < ApplicationController
   get "/campaigns/:slug/create_character" do
     @campaign = Campaign.find_by_slug(params[:slug])
     if logged_in?
-      erb :'/characters/new'
+      erb :'/characters/new_player'
     else
       redirect '/'
     end
@@ -13,8 +13,90 @@ class CharactersController < ApplicationController
     @user = User.find(session[:id])
     @campaign = Campaign.find_by_slug(params[:slug])
     @character = Character.new(params[:character])
-    binding.pry
     if @character.name != ""
+      @character.category = "player"
+      @character.campaign_id = @campaign.id
+      @character.save
+    end
+    if params[:attack_1][:name] != ""
+      @attack_1 = Attack.new(params[:attack_1])
+      @attack_1.character_id = @character.id
+      @attack_1.save
+    end
+    if params[:attack_2][:name] != ""
+      @attack_2 = Attack.new(params[:attack_2])
+      @attack_2.character_id = @character.id
+      @attack_2.save
+    end
+    if params[:attack_3][:name] != ""
+      @attack_3 = Attack.new(params[:attack_3])
+      @attack_3.character_id = @character.id
+      @attack_3.save
+    end
+    if params[:attack_4][:name] != ""
+      @attack_4 = Attack.new(params[:attack_4])
+      @attack_4.character_id = @character.id
+      @attack_4.save
+    end
+    redirect "/campaigns/#{@campaign.slug}"
+  end
+
+  get "/campaigns/:slug/create_character/npc" do
+    @campaign = Campaign.find_by_slug(params[:slug])
+    if logged_in?
+      erb :'/characters/new_npc'
+    else
+      redirect '/'
+    end
+  end
+
+  post '/:slug/characters/npc' do
+    @user = User.find(session[:id])
+    @campaign = Campaign.find_by_slug(params[:slug])
+    @character = Character.new(params[:character])
+    if @character.name != ""
+      @character.category = "npc"
+      @character.campaign_id = @campaign.id
+      @character.save
+    end
+    if params[:attack_1][:name] != ""
+      @attack_1 = Attack.new(params[:attack_1])
+      @attack_1.character_id = @character.id
+      @attack_1.save
+    end
+    if params[:attack_2][:name] != ""
+      @attack_2 = Attack.new(params[:attack_2])
+      @attack_2.character_id = @character.id
+      @attack_2.save
+    end
+    if params[:attack_3][:name] != ""
+      @attack_3 = Attack.new(params[:attack_3])
+      @attack_3.character_id = @character.id
+      @attack_3.save
+    end
+    if params[:attack_4][:name] != ""
+      @attack_4 = Attack.new(params[:attack_4])
+      @attack_4.character_id = @character.id
+      @attack_4.save
+    end
+    redirect "/campaigns/#{@campaign.slug}"
+  end
+
+  get "/campaigns/:slug/create_character/enemy" do
+    @campaign = Campaign.find_by_slug(params[:slug])
+    if logged_in?
+      erb :'/characters/new_enemy'
+    else
+      redirect '/'
+    end
+  end
+
+  post '/:slug/characters/enemy' do
+    @user = User.find(session[:id])
+    @campaign = Campaign.find_by_slug(params[:slug])
+    @character = Character.new(params[:character])
+    if @character.name != ""
+      @character.category = "enemy"
       @character.campaign_id = @campaign.id
       @character.save
     end

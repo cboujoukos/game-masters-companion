@@ -61,6 +61,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c2d6e5', end
 }
 
 .scroll-log {
+  font-style: italic;
   height: 390px;
   width: 250px;
   margin-top: 20px;
@@ -70,6 +71,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c2d6e5', end
   background-size: contain;
   background-repeat: no-repeat;
   -webkit-background-origin:border;
+}
+
+.scroll-log h3 {
+  font-family: 'Nothing You Could Do', cursive;
+}
+
+.scroll-log a {
+  color: black;
 }
 
 .border-left {

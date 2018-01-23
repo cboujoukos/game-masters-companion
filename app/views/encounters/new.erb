@@ -35,24 +35,20 @@
     <div class="col-md-3">
       <h4>Add Characters</h4>
       <h5>Players</h5>
-      <% @campaign.characters.each do |char| %>
-        <% if !!char.is_player %>
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" class="filled-in" checked="checked" name="encounter_characters[]" value="<%= char.id %>"> <%= char.name %>
-            </label>
-          </div>
-        <% end %>
+      <% @players.each do |char| %>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" class="filled-in" checked="checked" name="encounter_characters[]" value="<%= char.id %>"> <%= char.name %>
+          </label>
+        </div>
       <% end %>
       <h5>NPCs</h5>
-      <% @campaign.characters.each do |char| %>
-        <% if !char.is_player %>
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" name="encounter_characters[]" value="<%= char.id %>"> <%= char.name %>
-            </label>
-          </div>
-        <% end %>
+      <% @npcs.each do |char| %>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" name="encounter_characters[]" value="<%= char.id %>"> <%= char.name %>
+          </label>
+        </div>
       <% end %>
       </div>
       <div class="col-md-3">
@@ -70,10 +66,10 @@
             <li><a href="#">Separated link</a></li>
           </ul>
         </div>
-        <% @campaign.enemies.each do |enemy| %>
+        <% @enemies.each do |char| %>
           <div class="checkbox">
             <label>
-              <input type="checkbox" name="encounter_enemies[]" value="<%= enemy.id %>"> <%= enemy.category %>
+              <input type="checkbox" name="encounter_enemies[]" value="<%= char.id %>"> <%= char.name %>
             </label>
           </div>
         <% end %>
@@ -154,7 +150,14 @@
 
       </div>
     </div>
-    <button type="submit" class="btn btn-default">Submit</button>
+    <div class="row">
+      <div class="col-md-5">
+        <button type="submit" class="btn btn-default">Submit</button>
+      </div>
+      <div class="col-md-2">
+        <p><a href="/campaigns/<%= @campaign.slug %>">Cancel</a></p>
+      </div>
+    </div>
   </form>
 </div>
 

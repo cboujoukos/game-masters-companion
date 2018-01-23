@@ -1,6 +1,9 @@
 class EncountersController < ApplicationController
   get "/campaigns/:slug/create_encounter" do
     @campaign = Campaign.find_by_slug(params[:slug])
+    @players = @campaign.characters.select{|char| char.category == "player"}.map{|char| char}
+    @npcs = @campaign.characters.select{|char| char.category == "npc"}.map{|char| char}
+    @enemies = @campaign.characters.select{|char| char.category == "enemy"}.map{|char| char}
     if logged_in?
       erb :'/encounters/new'
     else
