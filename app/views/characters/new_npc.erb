@@ -4,148 +4,127 @@
 <% content_for :quill do %>
   ../img/quill.png
 <% end %>
-<div class="row form-backdrop">
-    <div class=col-md-12><div class="col-md-12">
-      <form class="" action="/<%= @campaign.slug %>/characters/npc" method="post">
-      <h2>Add a new character</h2>
-      <div class="radio">
-        <label>
-          <input type="radio" name="character[category]" id="char_category" value="player">
-          PC
-        </label>
-      </div>
-      <div class="radio">
-        <label>
-          <input type="radio" name="character[category]" id="char_category" value="npc" checked>
-          NPC
-        </label>
-      </div>
-      <div class="radio">
-        <label>
-          <input type="radio" name="character[category]" id="char_category" value="enemy">
-          Enemy
-        </label>
-      </div>
-    </div>
 
-    <div class="row">
-      <div class="col-md-7">
-        <div class="form-group">
-          <div class="row">
-            <div class="col-md-9">
-              <label for="Name">Name</label>
-              <input type="text" class="form-control" name="character[name]" id="character_name"    placeholder="Name">
-            </div>
-            <div class="col-md-3">
-              <label for="XP">Experience</label>
-              <input type="text" class="form-control" name="character[xp]" id="char_xp"    placeholder="XP">
-            </div>
+<div class="row backdrop">
+  <div class="col-md-12"><div class="col-md-12">
+    <form class="" action="/<%= @campaign.slug %>/characters/npc" method="post">
+    <h2>Add a new NPC</h2>
+  </div>
+
+  <div class="row">
+    <div class="col-md-7">
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-9">
+            <label for="Name">Name</label>
+            <input type="text" class="form-control" name="character[name]" id="character_name"    placeholder="Name">
+          </div>
+          <div class="col-md-3">
+            <label for="XP">Experience</label>
+            <input type="text" class="form-control" name="character[xp]" id="char_xp"    placeholder="XP">
           </div>
         </div>
-        <div class="form-group">
-          <div class="row">
-            <div class="col-md-3">
-              <label for="AC">Armor Class</label>
-              <input type="text" class="form-control" name="character[ac]" id="char_ac"    placeholder="AC">
-            </div>
-            <div class="col-md-3">
-              <label for="HP">Hit Points</label>
-              <input type="text" class="form-control" name="character[hp]" id="char_hp"    placeholder="HP">
-            </div>
-            <div class="col-md-3">
-              <label for="pp">Perception</label>
-              <input type="text" class="form-control" name="character[passive_perception]" id="char_pp"    placeholder="Passive Perception">
-            </div>
-            <div class="col-md-3">
-              <label for="CR">Creature Rating</label>
-              <input type="text" class="form-control" name="character[cr]" id="char_cr"    placeholder="CR">
-            </div>
-          </div> <!-- End of Row -->
-        </div>
-
-        <div class="form-group">
-          <label for="Stats">Stats</label>
-          <input type="text" class="form-control" name="character[stats]" id="character_stats"    placeholder="Stats">
-        </div>
-        <div class="form-group">
-          <label for="Notes">Notes</label>
-          <br>
-          <textarea name="character[notes]" class="form-control" rows="4" style="min-width: 100%"></textarea>
-        </div>
-
       </div>
-      <div class="col-md-5">
-        <div class="form-group">
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-4">
+            <label for="AC">Armor Class</label>
+            <input type="text" class="form-control" name="character[ac]" id="char_ac"    placeholder="AC">
+          </div>
+          <div class="col-md-4">
+            <label for="HP">Hit Points</label>
+            <input type="text" class="form-control" name="character[hp]" id="char_hp"    placeholder="HP">
+          </div>
+          <div class="col-md-4">
+            <label for="pp">Perception</label>
+            <input type="text" class="form-control" name="character[passive_perception]" id="char_pp"    placeholder="Passive Perception">
+          </div>
+        </div> <!-- End of Row -->
+      </div>
 
-          <div class="row">
-            <div class="col-md-4">
-              <label for="AC">Attack</label>
-              <input type="text" class="form-control" name="attack_1[name]" id="attack_1_name"    placeholder="Name">
-            </div>
-            <div class="col-md-4">
-              <label for="to_hit">To Hit</label>
-              <input type="text" class="form-control" name="attack_1[to_hit]" id="attack_1_to_hit"    placeholder="Att. Bonus">
-            </div>
-            <div class="col-md-4">
-              <label for="damage">Damage</label>
-              <input type="text" class="form-control" name="attack_1[damage]" id="attack_1_damage"    placeholder="Damage">
-            </div>
-          </div> <!-- End of Attack Row -->
-          <div class="row">
-            <div class="col-md-4">
-              <label for="AC">Attack</label>
-              <input type="text" class="form-control" name="attack_2[name]" id="attack_2_name"    placeholder="Name">
-            </div>
-            <div class="col-md-4">
-              <label for="to_hit">To Hit</label>
-              <input type="text" class="form-control" name="attack_2[to_hit]" id="attack_2_to_hit"    placeholder="Att. Bonus">
-            </div>
-            <div class="col-md-4">
-              <label for="damage">Damage</label>
-              <input type="text" class="form-control" name="attack_2[damage]" id="attack_2_damage"    placeholder="Damage">
-            </div>
+      <div class="form-group">
+        <label for="Stats">Stats</label>
+        <input type="text" class="form-control" name="character[stats]" id="character_stats"    placeholder="Stats">
+      </div>
+      <div class="form-group">
+        <label for="Notes">Notes</label>
+        <br>
+        <textarea name="character[notes]" class="form-control" rows="4" style="min-width: 100%"></textarea>
+      </div>
 
-          </div> <!-- End of Attack Row -->
-          <div class="row">
-            <div class="col-md-4">
-              <label for="AC">Attack</label>
-              <input type="text" class="form-control" name="attack_3[name]" id="attack_3_name"    placeholder="Name">
-            </div>
-            <div class="col-md-4">
-              <label for="to_hit">To Hit</label>
-              <input type="text" class="form-control" name="attack_3[to_hit]" id="attack_3_to_hit"    placeholder="Att. Bonus">
-            </div>
-            <div class="col-md-4">
-              <label for="damage">Damage</label>
-              <input type="text" class="form-control" name="attack_3[damage]" id="attack_3_damage"    placeholder="Damage">
-            </div>
+    </div>
+    <div class="col-md-5">
+      <div class="form-group">
 
-          </div> <!-- End of Attack Row -->
-          <div class="row">
-            <div class="col-md-4">
-              <label for="AC">Attack</label>
-              <input type="text" class="form-control" name="attack_4[name]" id="attack_4_name"    placeholder="Name">
-            </div>
-            <div class="col-md-4">
-              <label for="to_hit">To Hit</label>
-              <input type="text" class="form-control" name="attack_4[to_hit]" id="attack_4_to_hit"    placeholder="Att. Bonus">
-            </div>
-            <div class="col-md-4">
-              <label for="damage">Damage</label>
-              <input type="text" class="form-control" name="attack_4[damage]" id="attack_4_damage"    placeholder="Damage">
-            </div>
+        <div class="row">
+          <div class="col-md-4">
+            <label for="AC">Attack</label>
+            <input type="text" class="form-control" name="attack_1[name]" id="attack_1_name"    placeholder="Name">
+          </div>
+          <div class="col-md-4">
+            <label for="to_hit">To Hit</label>
+            <input type="text" class="form-control" name="attack_1[to_hit]" id="attack_1_to_hit"    placeholder="Att. Bonus">
+          </div>
+          <div class="col-md-4">
+            <label for="damage">Damage</label>
+            <input type="text" class="form-control" name="attack_1[damage]" id="attack_1_damage"    placeholder="Damage">
+          </div>
+        </div> <!-- End of Attack Row -->
+        <div class="row">
+          <div class="col-md-4">
+            <label for="AC">Attack</label>
+            <input type="text" class="form-control" name="attack_2[name]" id="attack_2_name"    placeholder="Name">
+          </div>
+          <div class="col-md-4">
+            <label for="to_hit">To Hit</label>
+            <input type="text" class="form-control" name="attack_2[to_hit]" id="attack_2_to_hit"    placeholder="Att. Bonus">
+          </div>
+          <div class="col-md-4">
+            <label for="damage">Damage</label>
+            <input type="text" class="form-control" name="attack_2[damage]" id="attack_2_damage"    placeholder="Damage">
+          </div>
 
-          </div> <!-- End of Attack Row -->
-        </div>
+        </div> <!-- End of Attack Row -->
+        <div class="row">
+          <div class="col-md-4">
+            <label for="AC">Attack</label>
+            <input type="text" class="form-control" name="attack_3[name]" id="attack_3_name"    placeholder="Name">
+          </div>
+          <div class="col-md-4">
+            <label for="to_hit">To Hit</label>
+            <input type="text" class="form-control" name="attack_3[to_hit]" id="attack_3_to_hit"    placeholder="Att. Bonus">
+          </div>
+          <div class="col-md-4">
+            <label for="damage">Damage</label>
+            <input type="text" class="form-control" name="attack_3[damage]" id="attack_3_damage"    placeholder="Damage">
+          </div>
+
+        </div> <!-- End of Attack Row -->
+        <div class="row">
+          <div class="col-md-4">
+            <label for="AC">Attack</label>
+            <input type="text" class="form-control" name="attack_4[name]" id="attack_4_name"    placeholder="Name">
+          </div>
+          <div class="col-md-4">
+            <label for="to_hit">To Hit</label>
+            <input type="text" class="form-control" name="attack_4[to_hit]" id="attack_4_to_hit"    placeholder="Att. Bonus">
+          </div>
+          <div class="col-md-4">
+            <label for="damage">Damage</label>
+            <input type="text" class="form-control" name="attack_4[damage]" id="attack_4_damage"    placeholder="Damage">
+          </div>
+
+        </div> <!-- End of Attack Row -->
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-4">
-        <button type="submit" class="btn btn-default">Submit</button>
-      </div>
-      <div class="col-md-2 col-md-offset-6">
-        <a href="/campaigns/<%= @campaign.slug %>">Cancel</a>
-      </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <button type="submit" class="btn btn-default">Submit</button>
     </div>
-  </form></div>
+    <div class="col-md-2 col-md-offset-6">
+      <p><a href="/campaigns/<%= @campaign.slug %>">Cancel</a></p>
+    </div>
+  </div>
+</form></div>
 </div>

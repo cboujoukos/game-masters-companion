@@ -4,28 +4,11 @@
 <% content_for :quill do %>
   ../img/quill.png
 <% end %>
+
 <div class="row backdrop">
   <div class="col-md-12"><div class="col-md-12">
     <form class="" action="/<%= @campaign.slug %>/characters" method="post">
     <h2>Add a new character</h2>
-    <div class="radio">
-      <label>
-        <input type="radio" name="character[category]" id="char_category" value="player"  checked>
-        PC
-      </label>
-    </div>
-    <div class="radio">
-      <label>
-        <input type="radio" name="character[category]" id="char_category" value="npc">
-        NPC
-      </label>
-    </div>
-    <div class="radio">
-      <label>
-        <input type="radio" name="character[category]" id="char_category" value="enemy">
-        Enemy
-      </label>
-    </div>
   </div>
 
   <div class="row">
@@ -44,21 +27,17 @@
       </div>
       <div class="form-group">
         <div class="row">
-          <div class="col-md-3">
+          <div class="col-md-4">
             <label for="AC">Armor Class</label>
             <input type="text" class="form-control" name="character[ac]" id="char_ac"    placeholder="AC">
           </div>
-          <div class="col-md-3">
+          <div class="col-md-4">
             <label for="HP">Hit Points</label>
             <input type="text" class="form-control" name="character[hp]" id="char_hp"    placeholder="HP">
           </div>
-          <div class="col-md-3">
+          <div class="col-md-4">
             <label for="pp">Perception</label>
             <input type="text" class="form-control" name="character[passive_perception]" id="char_pp"    placeholder="Passive Perception">
-          </div>
-          <div class="col-md-3">
-            <label for="CR">Creature Rating</label>
-            <input type="text" class="form-control" name="character[cr]" id="char_cr"    placeholder="CR">
           </div>
         </div> <!-- End of Row -->
       </div>
