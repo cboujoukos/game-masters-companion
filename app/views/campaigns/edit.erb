@@ -1,9 +1,12 @@
 <% content_for :title do %>
   Game Master's Companion
 <% end %>
+<% content_for :quill do %>
+  ../../img/quill.png
+<% end %>
 
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-6 form-backdrop">
     <form class="" action="/campaigns/<%= @campaign.slug %>" method="post">
       <h2>Edit campaign</h2>
       <div class="form-group">

@@ -1,5 +1,7 @@
 <% content_for :title do %>
   Game Master's Companion
+<% end %><% content_for :quill do %>
+  ../img/quill.png
 <% end %>
 
 <div class="row">
@@ -111,7 +113,7 @@
           <h4>Add New Enemy</h4>
         </div>
         <div class="modal-body" style="padding:40px 50px;">
-          <form role="form" action="/campaigns/<%= @campaign.slug %>/encounters/new/enemies_from_popup" method="post">
+          <form role="form" action="/campaigns/<%= @campaign.slug %>/encounters/enemies_from_popup" method="post">
             <div class="form-group">
               <div class="row">
                 <div class="col-md-8">

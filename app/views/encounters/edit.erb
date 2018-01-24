@@ -1,6 +1,9 @@
 <% content_for :title do %>
   Game Master's Companion
 <% end %>
+<% content_for :quill do %>
+  ../../../../img/quill.png
+<% end %>
 
 <h1>Encounters edit page</h1>
 
@@ -108,7 +111,7 @@
           <h4>Add New Enemy</h4>
         </div>
         <div class="modal-body" style="padding:40px 50px;">
-          <form role="form" action="/campaigns/<%= @campaign.slug %>/encounters/<%= @encounter.id %>/enemies_from_popup" method="post">
+          <form role="form" action="/campaigns/<%= @campaign.slug %>/encounters/enemies_from_popup" method="post">
             <div class="form-group">
               <div class="row">
                 <div class="col-md-8">
@@ -145,6 +148,51 @@
               <label for="Notes">Notes</label>
               <br>
               <textarea name="character[notes]" class="form-control" rows="4" style="min-width: 100%"></textarea>
+            </div>
+            <div class="form-group">
+            <!--  <label class="control-label"> Attack 1</label>  -->
+              <div class="row">
+                <div class="col-md-4">
+                  <label for="Attack_1">Attack</label>
+                  <input type="text" class="form-control" name="attack_1[name]" placeholder="Attack">
+                </div>
+                <div class="col-md-4">
+                  <label for="Attack_1">To Hit</label>
+                  <input type="text" class="form-control" name="attack_1[to_hit]" placeholder="Att Bonus">
+                </div>
+                <div class="col-md-4">
+                  <label for="Attack_1">Damage</label>
+                  <input type="text" class="form-control" name="attack_1[damage]" placeholder="Damage">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <label for="Attack_2">Attack</label>
+                  <input type="text" class="form-control" name="attack_2[name]" placeholder="Attack">
+                </div>
+                <div class="col-md-4">
+                  <label for="Attack_2">To Hit</label>
+                  <input type="text" class="form-control" name="attack_2[to_hit]" placeholder="Att Bonus">
+                </div>
+                <div class="col-md-4">
+                  <label for="Attack_2">Damage</label>
+                  <input type="text" class="form-control" name="attack_2[damage]" placeholder="Damage">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <label for="Attack_3">Attack</label>
+                  <input type="text" class="form-control" name="attack_3[name]" placeholder="Attack">
+                </div>
+                <div class="col-md-4">
+                  <label for="Attack_3">To Hit</label>
+                  <input type="text" class="form-control" name="attack_3[to_hit]" placeholder="Att Bonus">
+                </div>
+                <div class="col-md-4">
+                  <label for="Attack_3">Damage</label>
+                  <input type="text" class="form-control" name="attack_3[damage]" placeholder="Damage">
+                </div>
+              </div>
             </div>
             <button type="submit" class="btn btn-default">Submit</button>
           </form>

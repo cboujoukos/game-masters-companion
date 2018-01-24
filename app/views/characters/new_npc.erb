@@ -1,6 +1,9 @@
 <% content_for :title do %>
   Game Master's Companion
 <% end %>
+<% content_for :quill do %>
+  ../img/quill.png
+<% end %>
 <div class="row form-backdrop">
     <div class=col-md-12><div class="col-md-12">
       <form class="" action="/<%= @campaign.slug %>/characters/npc" method="post">
