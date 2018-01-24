@@ -8,56 +8,53 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <h2>Welcome to the game master's companion, <%= @user.username %></h2>
+      <h2>Welcome!</h2>
     </div>
   </div>
-  <br>
   <div class="row">
     <div class="col-md-8">
-      <div class="col-md-12 boxit">
-        <h4>The Game Master's Companion is your one stop campaign manager for all of your pen and paper role-playing game needs. Create, maintain, and explore your very own worlds with this customizable GM tool. Track your encounters, or check out the Encounter Generator for more ideas. To get started, create a new campaign, or dive into one of your pre-existing worlds!</h4>
+      <div class="col-md-12 backdrop backdrop-grey">
+        <h3 class="shrink"> Hi, <%= @user.username %>! Welcome to the Game Master’s Companion. Within these digital walls, you’ll discover a campaign manager that allows easy access to all of the player, NPC, and encounter info you need in any given session. Create, maintain, and explore your very own worlds with this customizable GM tool. Track your encounters, or check out the Random Encounter Generator for inspiration.
+        </h3>
+        <h3 class="shrink">
+          To get started, create a new campaign or dive into one of your pre-existing worlds!
+        </h3>
 
       </div>
     </div>
 
     <div class="col-md-4">
-      <div class="col-md-12 backdrop">
-        <h3>What's new with the GM's Companion?</h3>
-        <p>Well, Literally everything.</p>
-        <br>
-      </div>
+      <img src="/img/arcane-book.png" alt="">
 
     </div>
   </div>
   <div class="row">
     <div class="col-md-4">
-      <div class="col-md-12 backdrop">
+      <div class="col-md-12 backdrop backdrop-blue">
+        <h3>Your Campaigns</h3>
+        <dl><% current_user.campaigns.reverse.each do |c| %>
+          <dt><a href="/campaigns/<%= c.slug %>"><%= c.name %></a></dt>
+          <dd><%= c.notes %></dd>
+          <br>
+          <% end %>
+        </dl>
         <h3><a href="/campaigns/new">Start a New Campaign!</a></h3>
+        <br>
       </div>
     </div>
-    <div class="col-md-4">
-      <div class="col-md-12 backdrop">
+    <div class="col-md-8">
+      <div class="col-md-12 backdrop backdrop-blue">
         <h3>Recent Encounters</h3>
         <dl><% current_user.encounters.reverse[0..3].each do |enc| %>
-          <dt><a href="/campaigns/<%= enc.campaign.slug %>"><%= enc.name %></a></dt>
-          <dd class="underline">Campaign: <%= enc.campaign.name %></dd>
+          <dt><a href="/campaigns/<%= enc.campaign.slug %>/encounters/<%= enc.id %>"><%= enc.name %></a></dt>
+          <dd>Campaign: <%= enc.campaign.name %></dd>
           <dd>- <%= enc.notes %></dd>
           <br>
           <% end %>
         </dl>
       </div>
     </div>
-    <div class="col-md-4">
-        <div class="col-md-12 backdrop">
-          <h3>Your Campaigns</h3>
-          <dl><% current_user.campaigns.reverse.each do |c| %>
-            <dt><a href="/campaigns/<%= c.slug %>"><%= c.name %></a></dt>
-            <dd><%= c.notes %></dd>
-            <br>
-            <% end %>
-          </dl>
-        </div>
-    </div>
+
 
   </div>
 

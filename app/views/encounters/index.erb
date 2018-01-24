@@ -5,4 +5,59 @@
   ../img/quill.png
 <% end %>
 
-<h1>Encounters index page</h1>
+<h1 class="title">Encounters Log</h1>
+
+<% if @campaign.encounters.length < 4 %>
+  <div class="row">
+    <div class="col-md-6 scroll-log">
+      <% @campaign.encounters.reverse.each do |enc| %>
+        <h3> <a href="/campaigns/<%= @campaign.slug %>/encounters/<%= enc.id %>"><%= enc.name%></a> </h3>
+        <p>Loot: <%= enc.loot %></p>
+        <p>Notes: <%= enc.notes %></p>
+        <p>Enemies: <%= enc.characters.select{|char| char.category == "enemy"}.map{|char| char.name}.join(", ") %></p>
+        <% if !enc.characters.select{|char| char.category == "npc"}.empty? %>
+          <p>NPCs: <%= enc.characters.select{|char| char.category == "npc"}.map{|char| char.name}.join(", ") %></p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <h3> <a href="/">Back to campaigns</a> </h3>
+    </div>
+  </div>
+<% else %>
+  <div class="row">
+    <div class="col-md-12 scroll-log">
+      <div class="row">
+        <div class="col-md-6">
+          <% @campaign.encounters.reverse[0..@campaign.encounters.length/2].each do |enc| %>
+            <h3> <a href="/campaigns/<%= @campaign.slug %>/encounters/<%= enc.id %>"><%= enc.name%></a>   </h3>
+            <p>Loot: <%= enc.loot %></p>
+            <p>Notes: <%= enc.notes %></p>
+            <p>Enemies: <%= enc.characters.select{|char| char.category == "enemy"}.map{|char| char.name}.join(", ") %></p>
+            <% if !enc.characters.select{|char| char.category == "npc"}.empty? %>
+              <p>NPCs: <%= enc.characters.select{|char| char.category == "npc"}.map{|char| char.name}.join(", ") %></p>
+            <% end %>
+          <% end %>
+          </div>
+          <div class="col-md-6">
+            <% @campaign.encounters.reverse[(@campaign.encounters.length/2 +  1)..(@campaign.encounters.length-1)].each do |enc| %>
+            <h3> <a href="/campaigns/<%= @campaign.slug %>/encounters/<%= enc.id %>"></a> <%=   enc.name%></h3>
+            <p>Loot: <%= enc.loot %></p>
+            <p>Notes: <%= enc.notes %></p>
+            <p>Enemies: <%= enc.characters.select{|char| char.category == "enemy"}.map{|char| char.name}.join(", ") %></p>
+            <% if !enc.characters.select{|char| char.category == "npc"}.empty? %>
+              <p>NPCs: <%= enc.characters.select{|char| char.category == "npc"}.map{|char| char.name}.join(", ") %></p>
+            <% end %>
+          <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <h3> <a href="/">Back to campaigns</a> </h3>
+      </div>
+    </div>
+  <% end %>

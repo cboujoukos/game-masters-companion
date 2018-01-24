@@ -5,15 +5,15 @@
   ../../../img/quill.png
 <% end %>
 <div class="row">
-  <div class="col-md-12 boxit">
-    <h3><%= @encounter.name %></h3>
+  <div class="col-md-12">
+    <h3 class="title"><%= @encounter.name %></h3>
     <h4>&ensp;-<%= @encounter.notes %></h4>
     <h4>Loot: <%= @encounter.loot %></h4>
   </div>
 </div>
-<br><br>
+<br>
 <div class="row">
-  <div class="col-md-12 backdrop">
+  <div class="col-md-12 backdrop-blue">
     <h4>Party Members</h4>
     <span class="table-responsive">
       <table class="table table-bordered">
@@ -38,10 +38,10 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-md-4 backdrop">
-    <h4>NPCs</h4>
+  <div class="col-md-4">
+    <div class="col-md-12 backdrop-blue"><h4>NPCs</h4>
     <% @npcs.each do |npc| %>
-      <h5 class="emphasis"><%= npc.name %></h5>
+      <h5 class="emphasis"><a href="/campaigns/<%= @campaign.slug %>/characters/<%= npc.id %>"><%= npc.name %></a></h5>
       <div class="row">
         <div class="col-md-6">
           <p>AC: <%= npc.ac %></p>
@@ -76,12 +76,12 @@
           </table>
         </div>
       </div>
-    <% end %>
+    <% end %></div>
   </div>
-  <div class="col-md-4 col-md-offset-4 backdrop">
-    <h4>Enemies</h4>
+  <div class="col-md-8">
+    <div class="col-md-12 backdrop-red"><h4>Enemies</h4>
     <% @enemies.each do |enemy| %>
-      <h5 class="emphasis"><%= enemy.name %></h5>
+      <h5 class="emphasis"><a href="/campaigns/<%= @campaign.slug %>/characters/<%= enemy.id %>"><%= enemy.name %></a></h5>
       <div class="row">
         <div class="col-md-6">
           <p>AC: <%= enemy.ac %></p>
@@ -97,6 +97,7 @@
       </div>
       <div class="row">
         <div class="col-md-12">
+          <p>Attacks:</p>
           <table class="table table-bordered">
             <tr>
               <% enemy.attacks.each do |attack| %>
@@ -116,16 +117,20 @@
           </table>
         </div>
       </div>
-    <% end %>
+    <% end %></div>
   </div>
 </div>
 <br>
 
 <div class="row">
-  <div class="col-md-8">
-    <h4> <a href="/campaigns/<%= @campaign.slug %>/encounters/<%= @encounter.id %>/edit_encounter">Edit Encounter</a> </h4>
-  </div>
   <div class="col-md-4">
+    <h4> <a href="/campaigns/<%= @campaign.slug %>/encounters/<%= @encounter.id %>/edit_encounter">Edit Encounter</a> </h4>
     <h4><a href="/campaigns/<%= @campaign.slug %>">Back to Campaign</a></h4>
+  </div>
+  <div class="col-md-2 col-md-offset-6">
+    <form onsubmit="return confirm('Are you sure you want to delete <%= @encounter.name %>?')" action="/campaigns/<%= @campaign.slug %>/encounters/<%= @encounter.id %>/delete" method="post">
+          <input id="hidden" type="hidden" name="_method" value="delete">
+          <button type="submit" class="btn btn-warning">Delete Encounter</button>
+        </form>
   </div>
 </div>

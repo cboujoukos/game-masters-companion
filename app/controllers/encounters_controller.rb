@@ -93,7 +93,7 @@ class EncountersController < ApplicationController
     end
   end
 
-  delete "/campaigns/:slug/encounters/:id" do
+  delete "/campaigns/:slug/encounters/:id/delete" do
     @campaign = Campaign.find_by_slug(params[:slug])
     @encounter = Encounter.find(params[:id])
     if current_user.id == session[:id]

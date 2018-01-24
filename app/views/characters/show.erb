@@ -5,7 +5,7 @@
   ../img/quill.png
 <% end %>
 <div class="row">
-  <div class="col-md-8 backdrop">
+  <div class="col-md-8 <%= @character.category == 'player' || @character.category == 'npc' ? 'backdrop-blue' : 'backdrop-red' %>">
     <div class="row">
       <div class="col-md-9">
         <h2><%= @character.name %></h2>
@@ -89,10 +89,14 @@
 <!-- LINKS -->
 
 <div class="row">
-  <div class="col-md-8">
-    <h4> <a href="/campaigns/<%= @campaign.slug %>/characters/<%= @character.id %>/edit_character">Edit character</a> </h4>
-  </div>
   <div class="col-md-4">
+    <h4> <a href="/campaigns/<%= @campaign.slug %>/characters/<%= @character.id %>/edit_character">Edit Character</a> </h4>
     <h4><a href="/campaigns/<%= @campaign.slug %>">Back to Campaign</a></h4>
+  </div>
+  <div class="col-md-2 col-md-offset-2">
+    <form onsubmit="return confirm('Are you sure you want to delete <%= @character.name %>?')" action="/campaigns/<%= @campaign.slug %>/characters/<%= @character.id %>/delete" method="post">
+          <input id="hidden" type="hidden" name="_method" value="delete">
+          <button type="submit" class="btn btn-warning">Delete Character</button>
+        </form>
   </div>
 </div>
