@@ -2,7 +2,7 @@
   Game Master's Companion
 <% end %>
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-12 form-backdrop"><div class="col-md-12">
     <form class="" action="/campaigns/<%= @campaign.slug %>/characters/<%= @character.id %>" method="post">
       <input id="hidden" type="hidden" name="_method" value="patch">
       <h2>Edit Character</h2>
@@ -137,12 +137,12 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-4">
         <button type="submit" class="btn btn-default">Submit</button>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-2 col-md-offset-6">
         <p><a href="/campaigns/<%= @campaign.slug %>/characters/<%= @character.id %>">Cancel</a></p>
       </div>
     </div>
-  </form>
+  </form></div>
 </div>

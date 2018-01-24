@@ -2,9 +2,9 @@
   Game Master's Companion
 <% end %>
 
-<div class="container">
+<div class="row">
   <h2>Add a new encounter</h2>
-  <form class="" action="/<%= @campaign.slug %>/encounters" method="post">
+  <div class="col-md-12 form-backdrop"><form class="" action="/<%= @campaign.slug %>/encounters" method="post">
     <div class="row">
       <div class="col-md-6">
 
@@ -80,14 +80,14 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-5">
+      <div class="col-md-4">
         <button type="submit" class="btn btn-default">Submit</button>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-2 col-md-offset-6">
         <p><a href="/campaigns/<%= @campaign.slug %>">Cancel</a></p>
       </div>
     </div>
-  </form>
+  </form></div>
 </div>
 
 <!-- ######## START OF POPUP FORM #########-->
@@ -95,7 +95,7 @@
 <div class="container">
   <!-- Trigger the modal with a button -->
   <div class="row">
-    <div class="col-md-4 col-md-offset-8">
+    <div class="col-md-3 col-md-offset-9">
       <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-default btn-lg" id="myBtn">Add New Enemy</button>
     </div>
   </div>
@@ -148,6 +148,51 @@
               <label for="Notes">Notes</label>
               <br>
               <textarea name="character[notes]" class="form-control" rows="4" style="min-width: 100%"></textarea>
+            </div>
+            <div class="form-group">
+            <!--  <label class="control-label"> Attack 1</label>  -->
+              <div class="row">
+                <div class="col-md-4">
+                  <label for="Attack_1">Attack</label>
+                  <input type="text" class="form-control" name="attack_1[name]" placeholder="Attack">
+                </div>
+                <div class="col-md-4">
+                  <label for="Attack_1">To Hit</label>
+                  <input type="text" class="form-control" name="attack_1[to_hit]" placeholder="Att Bonus">
+                </div>
+                <div class="col-md-4">
+                  <label for="Attack_1">Damage</label>
+                  <input type="text" class="form-control" name="attack_1[damage]" placeholder="Damage">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <label for="Attack_2">Attack</label>
+                  <input type="text" class="form-control" name="attack_2[name]" placeholder="Attack">
+                </div>
+                <div class="col-md-4">
+                  <label for="Attack_2">To Hit</label>
+                  <input type="text" class="form-control" name="attack_2[to_hit]" placeholder="Att Bonus">
+                </div>
+                <div class="col-md-4">
+                  <label for="Attack_2">Damage</label>
+                  <input type="text" class="form-control" name="attack_2[damage]" placeholder="Damage">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <label for="Attack_3">Attack</label>
+                  <input type="text" class="form-control" name="attack_3[name]" placeholder="Attack">
+                </div>
+                <div class="col-md-4">
+                  <label for="Attack_3">To Hit</label>
+                  <input type="text" class="form-control" name="attack_3[to_hit]" placeholder="Att Bonus">
+                </div>
+                <div class="col-md-4">
+                  <label for="Attack_3">Damage</label>
+                  <input type="text" class="form-control" name="attack_3[damage]" placeholder="Damage">
+                </div>
+              </div>
             </div>
             <button type="submit" class="btn btn-default">Submit</button>
           </form>

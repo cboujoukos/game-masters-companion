@@ -1,8 +1,8 @@
 <% content_for :title do %>
   Game Master's Companion
 <% end %>
-<div class="row">
-  <div class="col-md-12">
+<div class="row backdrop">
+  <div class="col-md-12"><div class="col-md-12">
     <form class="" action="/<%= @campaign.slug %>/characters" method="post">
     <h2>Add a new character</h2>
     <div class="radio">
@@ -140,6 +140,9 @@
     <div class="col-md-4">
       <button type="submit" class="btn btn-default">Submit</button>
     </div>
+    <div class="col-md-2 col-md-offset-6">
+      <p><a href="/campaigns/<%= @campaign.slug %>">Cancel</a></p>
+    </div>
   </div>
-  </form>
+</form></div>
 </div>

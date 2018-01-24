@@ -203,36 +203,66 @@ class CharactersController < ApplicationController
     redirect "/campaigns/#{@campaign.slug}/characters/#{@character.id}"
   end
 
+  post '/campaigns/:slug/encounters/new/enemies_from_popup' do
+    @user = User.find(session[:id])
+    @campaign = Campaign.find_by_slug(params[:slug])
+    @character = Character.new(params[:character])
+    if @character.name != ""
+      @character.campaign_id = @campaign.id
+      @character.category = "enemy"
+      if params[:attack_1][:name] != ""
+        @attack_1 = Attack.new(params[:attack_1])
+        @attack_1.character_id = @character.id
+        @attack_1.save
+      end
+      if params[:attack_2][:name] != ""
+        @attack_2 = Attack.new(params[:attack_2])
+        @attack_2.character_id = @character.id
+        @attack_2.save
+      end
+      if params[:attack_3][:name] != ""
+        @attack_3 = Attack.new(params[:attack_3])
+        @attack_3.character_id = @character.id
+        @attack_3.save
+      end
+      @character.save
+      redirect "/campaigns/#{@campaign.slug}/create_encounter"
+    else
+      redirect '/'
+    end
+  end
+
   post '/campaigns/:slug/encounters/:id/enemies_from_popup' do
     @user = User.find(session[:id])
     @campaign = Campaign.find_by_slug(params[:slug])
     @encounter = Encounter.find(params[:id])
-    @enemy = Character.new(params[:character])
-    if @enemy.name != ""
-      @enemy.campaign_id = @campaign.id
-      @enemy.category = "enemy"
-      @enemy.save
-      binding.pry
+    @character = Character.new(params[:character])
+    if @character.name != ""
+      @character.campaign_id = @campaign.id
+      @character.category = "enemy"
+      if params[:attack_1][:name] != ""
+        @attack_1 = Attack.new(params[:attack_1])
+        @attack_1.character_id = @character.id
+        @attack_1.save
+      end
+      if params[:attack_2][:name] != ""
+        @attack_2 = Attack.new(params[:attack_2])
+        @attack_2.character_id = @character.id
+        @attack_2.save
+      end
+      if params[:attack_3][:name] != ""
+        @attack_3 = Attack.new(params[:attack_3])
+        @attack_3.character_id = @character.id
+        @attack_3.save
+      end
+      @character.save
       redirect "/campaigns/#{@campaign.slug}/encounters/#{@encounter.id}/edit_encounter"
     else
       redirect '/'
     end
   end
 
-  post '/campaigns/:slug/encounters/new/enemies_from_popup' do
-    @user = User.find(session[:id])
-    @campaign = Campaign.find_by_slug(params[:slug])
-    @enemy = Character.new(params[:character])
-    if @enemy.name != ""
-      @enemy.campaign_id = @campaign.id
-      @enemy.category = "enemy"
-      @enemy.save
-      binding.pry
-      redirect "/campaigns/#{@campaign.slug}/create_encounter"
-    else
-      redirect '/'
-    end
-  end
+
 
 #  delete "/campaigns/:slug/characters/:id/delete" do
 #    @campaign = Campaign.find_by_slug(params[:slug])

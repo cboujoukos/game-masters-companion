@@ -108,11 +108,13 @@
             <dd>AC: <%= char.ac %></dd>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-12">
-            <dd>Notes: <%= char.notes %></dd>
+        <% if char.notes != "" && char.notes != nil %>
+          <div class="row">
+            <div class="col-md-12">
+              <dd>Notes: <%= char.notes %></dd>
+            </div>
           </div>
-        </div>
+        <% end %>
         <br>
       <% end %>
       </dl>
