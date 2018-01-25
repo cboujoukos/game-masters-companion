@@ -20,15 +20,18 @@
 <h1 class="title">Encounters Log</h1>
 
 <% if @campaign.encounters.length == 0 %>
-    <div class="row">
+    <div class="row equal-height">
       <div class="col-md-6 scroll-log full">
         <h3>No encounters have been logged</h3>
+      </div>
+      <div class="col-md-6">
+        <img src="/img/books.jpg" class="hidden-sm hidden-xs img-responsive" alt="">
       </div>
     </div>
 
 <% elsif @campaign.encounters.length < 4 && @campaign.encounters.length > 0 %>
-  <div class="row">
-    <div class="col-md-6 scroll-log">
+  <div class="row equal-height">
+    <div class="col-md-6 scroll-log full">
       <% @campaign.encounters.reverse.each do |enc| %>
         <h3> <a href="/campaigns/<%= @campaign.slug %>/encounters/<%= enc.id %>"><%= enc.name%></a> </h3>
         <p>Loot: <%= enc.loot %></p>
@@ -39,6 +42,10 @@
         <% end %>
       <% end %>
     </div>
+    <div class="col-md-6">
+      <img src="/img/books.jpg" class="hidden-sm hidden-xs img-responsive" alt="">
+    </div>
+
 <!--    <div class="col-md-5">
       <img src="/img/books.jpg" alt="">
     </div>  -->

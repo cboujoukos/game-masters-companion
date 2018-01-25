@@ -107,6 +107,13 @@ img, video, audio, iframe, table, form {
 }
 
 @media (max-width: 991px) {
+  .scroll-log.full {
+    margin: 20px;
+    display: inline-grid;
+  }
+}
+
+@media (max-width: 991px) {
   .hidden-xs {
     display: block;
   }
@@ -168,10 +175,6 @@ img, video, audio, iframe, table, form {
 .scroll-log h3 a {
   font-family: 'Nothing You Could Do', cursive;
   font-weight: bold
-}
-
-.full {
-  height:600px;
 }
 
 a {
