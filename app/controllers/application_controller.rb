@@ -1,4 +1,7 @@
+require 'rack-flash'
+
 class ApplicationController < Sinatra::Base
+  use Rack::Flash, :sweep => true
   helpers Sinatra::ContentFor
 
   configure do

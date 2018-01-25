@@ -24,7 +24,8 @@ class EncountersController < ApplicationController
       @encounter.save
       redirect "/campaigns/#{@campaign.slug}"
     else
-      redirect '/'
+      flash[:name_error] = "Please give encounter a name."
+      redirect back
     end
   end
 
@@ -89,7 +90,8 @@ class EncountersController < ApplicationController
       @encounter.save
       redirect "/campaigns/#{@campaign.slug}/encounters/#{@encounter.id}"
     else
-      redirect '/'
+      flash[:name_error] = "Please give encounter a name."
+      redirect back
     end
   end
 

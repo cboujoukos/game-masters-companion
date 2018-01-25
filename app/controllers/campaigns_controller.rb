@@ -24,6 +24,7 @@ class CampaignsController < ApplicationController
       @campaign.save
       redirect "/campaigns/#{@campaign.slug}"
     else
+      flash[:name_error] = "Please give the campaign a name."
       redirect '/campaigns/new'
     end
   end
@@ -54,8 +55,13 @@ class CampaignsController < ApplicationController
     user = User.find(session[:id])
     @campaign = Campaign.find_by_slug(params[:slug])
     @campaign.update(name: params[:name], setting: params[:setting], notes: params[:notes])
-    @campaign.save
-    redirect "/campaigns/#{@campaign.slug}"
+    if params[:name] != nil && params[:name] != ""
+      @campaign.save
+      redirect "/campaigns/#{@campaign.slug}"
+    else
+      flash[:name_error] = "Please give the campaign a name."
+      redirect back
+    end
   end
 
   delete "/campaigns/:slug/delete" do

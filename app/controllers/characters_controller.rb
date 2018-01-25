@@ -13,6 +13,10 @@ class CharactersController < ApplicationController
     @user = User.find(session[:id])
     @campaign = Campaign.find_by_slug(params[:slug])
     @character = Character.new(params[:character])
+    if @character.name == ""
+      flash[:name_error] = "Please give character a name."
+      redirect back
+    end
     if @character.name != ""
       @character.category = "player"
       @character.campaign_id = @campaign.id
@@ -54,6 +58,10 @@ class CharactersController < ApplicationController
     @user = User.find(session[:id])
     @campaign = Campaign.find_by_slug(params[:slug])
     @character = Character.new(params[:character])
+    if @character.name == ""
+      flash[:name_error] = "Please give character a name."
+      redirect back
+    end
     if @character.name != ""
       @character.category = "npc"
       @character.campaign_id = @campaign.id
@@ -95,6 +103,10 @@ class CharactersController < ApplicationController
     @user = User.find(session[:id])
     @campaign = Campaign.find_by_slug(params[:slug])
     @character = Character.new(params[:character])
+    if @character.name == ""
+      flash[:name_error] = "Please give character a name."
+      redirect back
+    end
     if @character.name != ""
       @character.category = "enemy"
       @character.campaign_id = @campaign.id
@@ -258,7 +270,8 @@ class CharactersController < ApplicationController
       @character.save
       redirect back
     else
-      redirect '/'
+      flash[:name_error] = "Please give enemy a name."
+      redirect back
     end
   end
 
@@ -275,7 +288,7 @@ class CharactersController < ApplicationController
 #    end
 #  end
 
-  delete "/campaigns/:slug/characters/:id" do
+  delete "/campaigns/:slug/characters/:id/delete" do
     @campaign = Campaign.find_by_slug(params[:slug])
     @character = Character.find(params[:id])
     if current_user.id == session[:id]
