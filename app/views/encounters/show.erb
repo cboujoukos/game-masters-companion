@@ -51,15 +51,16 @@
   </div>
 </div>
 <div class="row">
+  <% if @npcs.length > 0 %>
   <div class="col-md-4">
     <div class="col-md-12 backdrop-blue"><h4>NPCs</h4>
     <% @npcs.each do |npc| %>
       <h5 class="emphasis"><a href="/campaigns/<%= @campaign.slug %>/characters/<%= npc.id %>"><%= npc.name %></a></h5>
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-xs-6">
           <p>AC: <%= npc.ac %></p>
         </div>
-        <div class="col-md-6">
+        <div class="col-xs-6">
           <p>HP: <%= npc.hp %></p>
         </div>
       </div>
@@ -91,16 +92,29 @@
       </div>
     <% end %></div>
   </div>
-  <div class="col-md-8">
+  <% end %>
+  <div class="col-md-<%= @npcs.length > 0 ? 8 : 12 %>">
     <div class="col-md-12 backdrop-red"><h4>Enemies</h4>
     <% @enemies.each do |enemy| %>
-      <h5 class="emphasis"><a href="/campaigns/<%= @campaign.slug %>/characters/<%= enemy.id %>"><%= enemy.name %></a></h5>
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-sm-9">
+          <h5 class="emphasis"><a href="/campaigns/<%= @campaign.slug %>/characters/<%= enemy.id %>"><%= enemy.name %></a></h5>
+        </div>
+        <div class="col-sm-3">
+          <% if enemy.cr != "" && enemy.cr != nil %>
+            <h5>CR: <%= enemy.cr %></h5>
+          <% end %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
           <p>AC: <%= enemy.ac %></p>
         </div>
-        <div class="col-md-6">
+        <div class="col-sm-4">
           <p>HP: <%= enemy.hp %></p>
+        </div>
+        <div class="col-sm-4">
+          <p>Perc: <%= enemy.passive_perception %></p>
         </div>
       </div>
       <div class="row">

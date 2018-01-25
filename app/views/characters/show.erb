@@ -17,7 +17,7 @@
     </li>
 <% end %>
 
-<div class="row">
+<div class="row equal-height">
   <div class="col-md-8 <%= @character.category == 'player' || @character.category == 'npc' ? 'backdrop-blue' : 'backdrop-red' %>">
     <div class="row">
       <div class="col-md-9">
@@ -30,17 +30,17 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-<%= @character.xp == "" || @character.xp == nil ? 4 : 3%>">
+      <div class="col-sm-<%= @character.xp == "" || @character.xp == nil ? 4 : 3%>">
         <h4>Armor Class: <%= @character.ac %></h4>
       </div>
-      <div class="col-md-<%= @character.xp == "" || @character.xp == nil ? 4 : 3%>">
+      <div class="col-sm-<%= @character.xp == "" || @character.xp == nil ? 4 : 3%>">
         <h4>Hit Points: <%= @character.hp %></h4>
       </div>
-      <div class="col-md-<%= @character.xp == "" || @character.xp == nil ? 4 : 3%>">
+      <div class="col-sm-<%= @character.xp == "" || @character.xp == nil ? 4 : 3%>">
         <h4>Passive Perception: <%= @character.passive_perception %></h4>
       </div>
       <% if @character.xp != "" && @character.xp != nil %>
-        <div class="col-md-3">
+        <div class="col-sm-3">
           <h4>XP: <%= @character.xp %></h4>
         </div>
       <% end %>
@@ -90,23 +90,23 @@
     </form>  -->
   </div>
   <div class="col-md-4">
-    <div class="scroll-log"><h3>Encounter Log</h3>
+    <div class="col-md-12"><div class="scroll-log"><h3>Encounter Log</h3>
     <% @character.encounters.reverse[0..2].each do |enc| %>
       <dl>
         <dt><a href="/campaigns/<%= @campaign.slug %>/encounters/<%= enc.id %>"><%= enc.name %></a></dt>
         <dd><%= enc.notes %></dd>
       </dl>
-      <% end %></div>
+      <% end %></div></div>
   </div>
 </div>
 <!-- LINKS -->
 
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-xs-4">
     <h4> <a href="/campaigns/<%= @campaign.slug %>/characters/<%= @character.id %>/edit_character">Edit Character</a> </h4>
     <h4><a href="/campaigns/<%= @campaign.slug %>">Back to Campaign</a></h4>
   </div>
-  <div class="col-md-2 col-md-offset-2">
+  <div class="col-xs-2 col-xs-offset-2">
     <form onsubmit="return confirm('Are you sure you want to delete <%= @character.name %>?')" action="/campaigns/<%= @campaign.slug %>/characters/<%= @character.id %>/delete" method="post">
           <input id="hidden" type="hidden" name="_method" value="delete">
           <button type="submit" class="btn btn-warning">Delete Character</button>

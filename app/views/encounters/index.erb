@@ -19,7 +19,14 @@
 
 <h1 class="title">Encounters Log</h1>
 
-<% if @campaign.encounters.length < 4 %>
+<% if @campaign.encounters.length == 0 %>
+    <div class="row">
+      <div class="col-md-6 scroll-log full">
+        <h3>No encounters have been logged</h3>
+      </div>
+    </div>
+
+<% elsif @campaign.encounters.length < 4 && @campaign.encounters.length > 0 %>
   <div class="row">
     <div class="col-md-6 scroll-log">
       <% @campaign.encounters.reverse.each do |enc| %>
@@ -76,5 +83,3 @@
       </div>
     </div>
   <% end %>
-
-  [0..@campaign.encounters.length/2]

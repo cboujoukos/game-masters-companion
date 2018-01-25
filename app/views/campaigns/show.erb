@@ -33,13 +33,13 @@
       <dl class=""><% @players.each do |char| %>
         <dt><a href="/campaigns/<%= @campaign.slug %>/characters/<%= char.id %>"><%= char.name %></a></dt>
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-sm-4">
             <dd>AC: <%= char.ac %></dd>
           </div>
-          <div class="col-md-4">
+          <div class="col-sm-4">
             <dd>HP: <%= char.hp %></dd>
           </div>
-          <div class="col-md-4">
+          <div class="col-sm-4">
             <dd>Perc: <%= char.passive_perception %></dd>
           </div>
         </div>
@@ -58,13 +58,13 @@
       <dl class=""><% @npcs.reverse[0..3].each do |char| %>
         <dt><a href="/campaigns/<%= @campaign.slug %>/characters/<%= char.id    %>"><%= char.name %></a></dt>
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-sm-4">
             <dd>AC: <%= char.ac %></dd>
           </div>
-          <div class="col-md-4">
+          <div class="col-sm-4">
             <dd>HP: <%= char.hp %></dd>
           </div>
-          <div class="col-md-4">
+          <div class="col-sm-4">
             <dd>Perc: <%= char.passive_perception %></dd>
           </div>
         </div>
@@ -112,13 +112,13 @@
           </div>
         </dt>
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-sm-4">
             <dd>Perception: <%= char.passive_perception %></dd>
           </div>
-          <div class="col-md-4">
+          <div class="col-sm-4">
             <dd>HP: <%= char.hp %></dd>
           </div>
-          <div class="col-md-4">
+          <div class="col-sm-4">
             <dd>AC: <%= char.ac %></dd>
           </div>
         </div>

@@ -36,7 +36,7 @@
     </div>
 
     <div class="col-md-4">
-      <img src="/img/arcane-book.png" alt="">
+      <img src="/img/arcane-book.png" class="img-responsive" alt="">
 
     </div>
   </div>
@@ -56,7 +56,7 @@
     </div>
     <div class="col-md-8">
       <div class="col-md-12 backdrop backdrop-blue">
-        <h3>Recent Encounters</h3>
+        <h3 class="right-align">Recent Encounters</h3>
         <dl><% current_user.encounters.reverse[0..3].each do |enc| %>
           <dt><a href="/campaigns/<%= enc.campaign.slug %>/encounters/<%= enc.id %>"><%= enc.name %></a></dt>
           <dd>Campaign: <%= enc.campaign.name %></dd>

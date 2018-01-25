@@ -64,6 +64,10 @@ body {
   font-weight: bold;
 }
 
+.right-align {
+  text-align: right;
+}
+
 #display {
   height:205px;
   padding:4px;
@@ -85,7 +89,50 @@ img, video, audio, iframe, table, form {
   max-width: 100%; /* FF, Safari, Chrome */
 }
 
+/*/////// MEDIA QUERIES ///////*/
+
+@media (min-width: 768px) {
+  .row.equal-height {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 991px) {
+  .scroll-log {
+    margin-top: 20px;
+    margin-left: -30px;
+    display: inline-grid;
+  }
+}
+
+@media (max-width: 991px) {
+  .hidden-xs {
+    display: block;
+  }
+}
+
+@media (max-width: 991px) {
+  div[class*="backdrop"] {
+    margin-top: 10px;
+    padding-top: 5px;
+  }
+}
+
+@media (max-width:991px) {
+  img {
+    display:block;
+    margin:0;
+  }
+}
+
+
 /*/////// LAYOUT STYLES ///////*/
+.equal-height {
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+}
 
 .row {
   margin-bottom: 20px;
@@ -108,10 +155,10 @@ img, video, audio, iframe, table, form {
 
 .scroll-log {
   display: inline-block;
+  min-height: 400px;
   font-style: italic;
   font-family: 'Nothing You Could Do', cursive;
-  margin-left: 10px;
-  padding: 20px 30px;
+  padding: 20px;
   background-image: url("../img/paper.jpg");
   background-size: cover;
   background-repeat: no-repeat;
@@ -121,6 +168,10 @@ img, video, audio, iframe, table, form {
 .scroll-log h3 a {
   font-family: 'Nothing You Could Do', cursive;
   font-weight: bold
+}
+
+.full {
+  height:600px;
 }
 
 a {
@@ -134,15 +185,18 @@ a {
 
 .backdrop-red {
   background-color: rgba(140, 7, 14, 0.1);
+  min-height: 200px;
 }
 
 .backdrop-blue {
   background-color: rgba(16, 7, 140, 0.1);
+  min-height: 200px;
 }
 
 .backdrop-grey {
   /*font: bold 1.5em 'Arial Rounded MT Bold', Helvetica, Arial, sans-serif;*/
   background-color: rgba(0, 0, 0, 0.1);
+  min-height: 200px;
 }
 
 .form-backdrop {
