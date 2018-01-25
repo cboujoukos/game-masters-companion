@@ -69,7 +69,9 @@ body {
   padding:4px;
   border:1px solid black;
   background-image: url("../img/paper.jpg");
-  /*font:16px/26px Athelas, Garamond, Serif;overflow:auto;*/
+  font-size: 1.1em;
+  overflow:auto;
+  /*font:16px/26px Athelas, Garamond, Serif;*/
 }
 
 
@@ -116,7 +118,7 @@ img, video, audio, iframe, table, form {
   -webkit-background-origin:border;
 }
 
-.scroll-log h3 {
+.scroll-log h3 a {
   font-family: 'Nothing You Could Do', cursive;
   font-weight: bold
 }
@@ -124,6 +126,10 @@ img, video, audio, iframe, table, form {
 a {
   color: black;
   text-decoration: underline;
+}
+
+.navbar a {
+  text-decoration: none;
 }
 
 .backdrop-red {

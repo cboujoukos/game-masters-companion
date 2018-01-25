@@ -4,6 +4,18 @@
 <% content_for :quill do %>
   ../img/quill.png
 <% end %>
+<% content_for :nav_dropdown do %>
+  <li class="dropdown">
+    <a data-target="#" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"  aria-haspopup="true" aria-expanded="false">Campaigns  <span class="caret"></span></a>
+    <ul class="dropdown-menu">
+      <% current_user.campaigns.each do |campaign| %>
+        <li><a href="/campaigns/<%= campaign.slug %>"><%= campaign.name %></a></li>
+        <% end %>
+        <li role="separator" class="divider"></li>
+        <li><a href="/campaigns/new">New Campaign</a></li>
+      </ul>
+    </li>
+<% end %>
 
 <h1 class="title">Encounters Log</h1>
 
@@ -32,7 +44,7 @@
       <div class="row">
         <div class="col-md-6">
           <% @campaign.encounters.reverse[0..@campaign.encounters.length/2].each do |enc| %>
-            <h3> <a href="/campaigns/<%= @campaign.slug %>/encounters/<%= enc.id %>"><%= enc.name%></a>   </h3>
+            <h3> <a href="/campaigns/<%= @campaign.slug %>/encounters/<%= enc.id %>"><%=   enc.name%></a> </h3>
             <p>Loot: <%= enc.loot %></p>
             <p>Notes: <%= enc.notes %></p>
             <p>Enemies: <%= enc.characters.select{|char| char.category == "enemy"}.map{|char| char.name}.join(", ") %></p>
@@ -43,7 +55,7 @@
           </div>
           <div class="col-md-6">
             <% @campaign.encounters.reverse[(@campaign.encounters.length/2 +  1)..(@campaign.encounters.length-1)].each do |enc| %>
-            <h3> <a href="/campaigns/<%= @campaign.slug %>/encounters/<%= enc.id %>"></a> <%=   enc.name%></h3>
+            <h3> <a href="/campaigns/<%= @campaign.slug %>/encounters/<%= enc.id %>"><%=   enc.name%></a> </h3>
             <p>Loot: <%= enc.loot %></p>
             <p>Notes: <%= enc.notes %></p>
             <p>Enemies: <%= enc.characters.select{|char| char.category == "enemy"}.map{|char| char.name}.join(", ") %></p>
@@ -57,7 +69,9 @@
     </div>
     <div class="row">
       <div class="col-md-4">
-        <h3> <a href="/">Back to campaigns</a> </h3>
+        <h3> <a href="/campaigns/<%= @campaign.slug %>">Back to Campaign</a> </h3>
       </div>
     </div>
   <% end %>
+
+  [0..@campaign.encounters.length/2]

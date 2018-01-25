@@ -3,6 +3,18 @@
 <% end %><% content_for :quill do %>
   ../img/quill.png
 <% end %>
+<% content_for :nav_dropdown do %>
+  <li class="dropdown">
+    <a data-target="#" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"  aria-haspopup="true" aria-expanded="false">Campaigns  <span class="caret"></span></a>
+    <ul class="dropdown-menu">
+      <% current_user.campaigns.each do |campaign| %>
+        <li><a href="/campaigns/<%= campaign.slug %>"><%= campaign.name %></a></li>
+        <% end %>
+        <li role="separator" class="divider"></li>
+        <li><a href="/campaigns/new">New Campaign</a></li>
+      </ul>
+    </li>
+<% end %>
 
 <div class="row">
   <h2>Add a new encounter</h2>

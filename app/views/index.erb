@@ -4,6 +4,18 @@
 <% content_for :quill do %>
   img/quill.png
 <% end %>
+<% content_for :nav_dropdown do %>
+  <li class="dropdown">
+    <a data-target="#" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"  aria-haspopup="true" aria-expanded="false">Campaigns  <span class="caret"></span></a>
+    <ul class="dropdown-menu">
+      <% current_user.campaigns.each do |campaign| %>
+        <li><a href="/campaigns/<%= campaign.slug %>"><%= campaign.name %></a></li>
+        <% end %>
+        <li role="separator" class="divider"></li>
+        <li><a href="/campaigns/new">New Campaign</a></li>
+      </ul>
+    </li>
+<% end %>
 
 <div class="container">
   <div class="row">
@@ -14,11 +26,11 @@
   <div class="row">
     <div class="col-md-8">
       <div class="col-md-12 backdrop backdrop-grey">
-        <h3 class="shrink"> Hi, <%= @user.username %>! Welcome to the Game Master’s Companion. Within these digital walls, you’ll discover a campaign manager that allows easy access to all of the player, NPC, and encounter info you need in any given session. Create, maintain, and explore your very own worlds with this customizable GM tool. Track your encounters, or check out the Random Encounter Generator for inspiration.
-        </h3>
-        <h3 class="shrink">
+        <h4 class="shrink"> Hi, <%= @user.username %>! Welcome to the Game Master’s Companion. Within these digital walls, you’ll discover a campaign manager that allows easy access to all of the player, NPC, and encounter info you need in any given session. Create, maintain, and explore your very own worlds with this customizable GM tool. Track your encounters, or check out the Random Encounter Generator for inspiration.
+        </h4>
+        <h4 class="shrink">
           To get started, create a new campaign or dive into one of your pre-existing worlds!
-        </h3>
+        </h4>
 
       </div>
     </div>
