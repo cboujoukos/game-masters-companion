@@ -30,8 +30,9 @@ class CampaignsController < ApplicationController
   end
 
   get '/campaigns/:slug' do
-    if logged_in?
-      @campaign = Campaign.find_by_slug(params[:slug])
+    @campaign = Campaign.find_by_slug(params[:slug])
+    if logged_in? # && @campaign.user == current_user
+
       @encounters = @campaign.encounters
       @players = @campaign.characters.select{|ch| ch.category == "player"}.map{|ch| ch}
       @npcs = @campaign.characters.select{|ch| ch.category == "npc"}.map{|ch| ch}
@@ -51,16 +52,20 @@ class CampaignsController < ApplicationController
     end
   end
 
-  post '/campaigns/:slug' do
+  patch '/campaigns/:slug' do
     user = User.find(session[:id])
     @campaign = Campaign.find_by_slug(params[:slug])
-    @campaign.update(name: params[:name], setting: params[:setting], notes: params[:notes])
-    if params[:name] != nil && params[:name] != ""
-      @campaign.save
-      redirect "/campaigns/#{@campaign.slug}"
+    if logged_in? && @campaign.user == current_user
+      @campaign.update(name: params[:name], setting: params[:setting], notes: params[:notes])
+      if params[:name] != nil && params[:name] != ""
+        @campaign.save
+        redirect "/campaigns/#{@campaign.slug}"
+      else
+        flash[:name_error] = "Please give the campaign a name."
+        redirect back
+      end
     else
-      flash[:name_error] = "Please give the campaign a name."
-      redirect back
+      redirect '/login'
     end
   end
 

@@ -2,7 +2,7 @@ class CharactersController < ApplicationController
 
   get "/campaigns/:slug/create_character" do
     @campaign = Campaign.find_by_slug(params[:slug])
-    if logged_in?
+    if logged_in? && @campaign.user == current_user
       erb :'/characters/new_player'
     else
       redirect '/'

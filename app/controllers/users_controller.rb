@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   post '/signup' do
     user = User.new(params)
-    if user.save && user.username != "" && user.email != "" && user.password != ""
+    if user.username != "" && user.email != "" && user.password != "" && user.save
       session[:id] = user.id
       redirect '/'
     else

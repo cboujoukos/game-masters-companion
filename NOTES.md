@@ -1,4 +1,4 @@
-NEED HELP FIGURING OUT THE QUILL ICON ISSUE! WHAT IS HAPPENING????????
+Authenticate all patch requests with [@campaign].user == current_user
 
 Dropdown still not working in views located in subdirectories
 
