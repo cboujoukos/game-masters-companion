@@ -71,12 +71,12 @@ class CampaignsController < ApplicationController
 
   delete "/campaigns/:slug/delete" do
     @campaign = Campaign.find_by_slug(params[:slug])
-    if current_user.id == session[:id]
+    if looged_in? && @campaign.user == current_user
       @campaign.delete
       # DELETE ALL ASSOCIATED ENCOUNTERS AND CHARACTERS?
       redirect "/"
     else
-      redirect '/'
+      redirect '/login'
     end
   end
 end

@@ -98,7 +98,7 @@ class EncountersController < ApplicationController
   delete "/campaigns/:slug/encounters/:id/delete" do
     @campaign = Campaign.find_by_slug(params[:slug])
     @encounter = Encounter.find(params[:id])
-    if current_user.id == session[:id]
+    if logged_in? && @campaign.user == current_user
       @encounter.delete
       redirect "campaigns/#{@campaign.slug}"
     else
