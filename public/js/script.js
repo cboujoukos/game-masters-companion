@@ -26,7 +26,7 @@ function generate() {
     'Later, when the party member(s) inspect the ring, they notice strange runes hand-engraved on the inside of the band. The character may sit with the ring as they would a magical item, in order to decipher the runic script. When they do, speaking the words creates a dark storm cloud, and unleashes demons into the streets. '
     ];
   var hooks2 = [
-    `The player with the highest passive perception overhears a${randomize(raceAfterA)} exchanging hushed, but heated words in a strange dialect with a man whose face is cast in shadow. After the conversation, she begins to walk through the streets towards the party as the man slips away. `,
+    `The player with the highest passive perception overhears a female ${randomize(race)} exchanging hushed, but heated words in a strange dialect with a man whose face is cast in shadow. After the conversation, she begins to walk through the streets towards the party as the man slips away. `,
     'You notice a group of commoners parting their path, giving a wide berth to a royal guard walking through the streets. While his posture remains that of a professional, his green eyes dart desperately over the crowd. ',
     `The player with the lowest passive perception feels a tug at his/her coin purse. When the character turns around, they spy a ruddy-faced ${randomize(race)}, no older than ten, whose blue eyes begin to swell with tears.  `
     ];
