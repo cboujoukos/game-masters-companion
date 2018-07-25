@@ -40,27 +40,35 @@
   <div class="row">
     <div class="col-md-4">
       <div class="col-md-12 backdrop backdrop-blue">
-        <h3>Your Campaigns</h3>
-        <dl><% current_user.campaigns.reverse.each do |c| %>
-          <dt><a href="/campaigns/<%= c.slug %>"><%= c.name %></a></dt>
-          <dd><%= c.notes %></dd>
-          <br>
+        <h2>Your Campaigns</h2>
+        <% if current_user.campaigns.length > 0 %>
+          <dl><% current_user.campaigns.reverse.each do |c| %>
+            <dt class="campaign-name"><a href="/campaigns/<%= c.slug %>"><%= c.name %></a></dt>
+            <dd><%= c.notes %></dd>
+            <br>
+            <% end %>
+          </dl>
+          <% else %>
+          <p>You dont have any campaigns yet<p>
           <% end %>
-        </dl>
         <h3><a href="/campaigns/new">Start a New Campaign!</a></h3>
         <br>
       </div>
     </div>
     <div class="col-md-8">
       <div class="col-md-12 backdrop backdrop-blue">
-        <h3 class="right-align">Recent Encounters</h3>
-        <dl><% current_user.encounters.reverse[0..3].each do |enc| %>
-          <dt><a href="/campaigns/<%= enc.campaign.slug %>/encounters/<%= enc.id %>"><%= enc.name %></a></dt>
-          <dd>Campaign: <%= enc.campaign.name %></dd>
-          <dd>- <%= enc.notes %></dd>
-          <br>
-          <% end %>
-        </dl>
+        <h2 class="right-align">Recent Encounters</h2>
+        <% if current_user.encounters.length > 0 %>
+          <dl><% current_user.encounters.reverse[0..3].each do |enc| %>
+            <dt><a href="/campaigns/<%= enc.campaign.slug %>/encounters/<%= enc.id %>"><%= enc.name %></a></dt>
+            <dd>Campaign: <%= enc.campaign.name %></dd>
+            <dd>- <%= enc.notes %></dd>
+            <br>
+            <% end %>
+          </dl>
+        <% else %>
+          <p>You have not created any encounters yet<p>
+        <% end %>
       </div>
     </div>
 

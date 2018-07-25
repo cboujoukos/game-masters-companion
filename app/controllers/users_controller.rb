@@ -1,4 +1,7 @@
+require 'rack-flash'
+
 class UsersController < ApplicationController
+  use Rack::Flash, :sweep => true
 
   get '/signup' do
     erb :'/users/create_user'
@@ -15,15 +18,17 @@ class UsersController < ApplicationController
   end
 
   get '/login' do
-    erb :login
+    erb :'/users/login'
   end
 
   post '/' do
     @user = User.find_by(email: params[:email])
     if @user && @user.authenticate(params[:password])
       session[:id] = @user.id
-      redirect '/'
+    else
+      flash[:login_error] = "Incorrect email/password."
     end
+    redirect '/'
   end
 
   get '/logout' do

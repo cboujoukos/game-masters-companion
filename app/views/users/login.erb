@@ -17,6 +17,11 @@
         <h2>Log in or <a href="/signup">create a new account</a></h2>
 
         <div class="form-group">
+          <% if flash.has?(:login_error) %>
+            <div class="flash-error">
+              <%= flash[:login_error] %>
+            </div><br>
+          <% end %>
           <label for="Email">Email</label>
           <input type="email" class="form-control" name="email" id="email"    placeholder="Email">
         </div>
