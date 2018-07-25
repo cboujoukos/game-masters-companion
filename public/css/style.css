@@ -72,8 +72,10 @@ body {
   height:205px;
   padding:4px;
   border:1px solid black;
+  border-radius: 5px;
   background-image: url("../img/paper.jpg");
-  font-size: 1.1em;
+  /* background-color: antiquewhite; */
+  font-size: 1.2em;
   overflow:auto;
   /*font:16px/26px Athelas, Garamond, Serif;*/
 }
@@ -84,6 +86,10 @@ body {
   padding:5px;
   width: max-content;
   z-index: 1000;
+}
+
+dt.campaign-name a {
+  font-size: 1.5em;
 }
 
 
@@ -215,6 +221,15 @@ a {
   padding: 20px;
   background-color: rgba(140, 7, 14, 0.1);
 }
+
+button {
+  background-color: aliceblue;
+  border-radius: 4px;
+  padding: 10px;
+  border-style: none;
+  border: 1px solid black;
+}
+
 
 /*h3, h4, h5, h6 {
   font: bold 1.25em 'Arial Rounded MT Bold', Helvetica, Arial, sans-serif;
