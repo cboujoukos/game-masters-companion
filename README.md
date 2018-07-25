@@ -5,6 +5,10 @@ Welcome to the Game Master’s Companion. Our goal is to design the perfect loca
 
 Within these digital walls, you’ll discover a campaign manager that allows easy access to all of the player, NPC, and encounter info you need in any given session. Create, maintain, and explore your very own worlds with this customizable GM tool. Track your encounters or check out the Random Encounter Generator for inspiration. Best of all—the Game Master’s Companion is totally free.
 
+# Usage
+  Fork and clone this repo
+  Run with `shotgun`
+
 
 
 # Built with
@@ -12,4 +16,4 @@ Within these digital walls, you’ll discover a campaign manager that allows eas
 
 
 # License
-  The gem is available as open source under the terms of the MIT License.
+  The app is available as open source under the terms of the MIT License.
